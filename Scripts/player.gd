@@ -1,23 +1,23 @@
 extends CharacterBody3D
 
 # Gravity variables
-const JUMP_VELOCITY = 4.6
-var gravity = 9.8 # m/s^2
+const JUMP_VELOCITY = 5.0
+var gravity = 9.8
 
 # Movement variables
-const SENSITIVITY = 0.001
-const WALK_SPEED = 5.0
-const SPRINT_SPEED = 7.5
+const SENSITIVITY = 0.0005
+const WALK_SPEED = 3.8
+const SPRINT_SPEED = 7.0
 var speed
 
 # Bob variables
-const BOB_FREQ = 2.0
-const BOB_AMP = 0.04
+const BOB_FREQ = 2.4
+const BOB_AMP = 0.023
 var t_bob = 0.0
 
 # FOV variables
-const BASE_FOV = 75
-const FOV_CHANGE = 0.5
+const BASE_FOV = 75.0
+const FOV_CHANGE = 1.2
 
 # Define onready variables so we can use head and camera var later
 @onready var head = $head
@@ -44,11 +44,11 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	# Add Gravity. Decrement from y velocity the falling speed due to gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta 
+		velocity.y -= gravity * delta * 1.4
 
 	# Handle Jump. Player presses space AND is on floor.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 1.1
 
 	# Handle Sprint
 	if Input.is_action_pressed("sprint"):
@@ -72,8 +72,8 @@ func _physics_process(delta):
 			velocity.z = direction.z * speed
 		# how fast we stop (using intertia)
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)
 	# while in air (using intertia)
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
@@ -83,10 +83,13 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 
-	# FOV
+	# FOV (only activate when sprint is held)
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	camera.fov = lerp(camera.fov, target_fov, delta * 10.0)
+	if Input.is_action_pressed("sprint"):
+		camera.fov = lerp(camera.fov, target_fov, delta * 2.0)
+	else:
+		camera.fov = lerp(camera.fov, BASE_FOV, delta * 6.0)
 
 	move_and_slide()
 
