@@ -24,6 +24,7 @@ const FOV_CHANGE = 1.2
 @onready var camera = $head/Camera3D
 
 
+
 # Disable cursor 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
