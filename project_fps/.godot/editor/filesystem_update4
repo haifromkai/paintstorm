@@ -1,2 +1,3 @@
-res://Scripts/player.gd
 res://Scenes/world.tscn
+res://Scenes/dorito.tscn
+res://Scripts/player.gd

@@ -6,8 +6,8 @@ var gravity = 9.8
 
 # Movement variables
 const SENSITIVITY = 0.0005
-const WALK_SPEED = 3.8
-const SPRINT_SPEED = 7.0
+const WALK_SPEED = 3.6
+const SPRINT_SPEED = 6.6
 var speed
 
 # Bob variables
