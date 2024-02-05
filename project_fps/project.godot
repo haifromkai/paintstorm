@@ -62,3 +62,5 @@ scaling_3d/mode=1
 anti_aliasing/quality/msaa_3d=2
 viewport/mode=1
 viewport/quality/msaa_3d=8
+reflections/hdr_2d=false
+reflections/transparent_background=true

@@ -1,0 +1,193 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 146,
+      "max": [
+        1.2154799699783325,
+        1.2154799699783325,
+        0.5385599732398987
+      ],
+      "min": [
+        -1.2154799699783325,
+        -1.2154799699783325,
+        0.00011000000085914508
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 1752,
+      "componentType": 5126,
+      "count": 146,
+      "max": [
+        0.9999082684516907,
+        0.9999082684516907,
+        1.0
+      ],
+      "min": [
+        -0.9999082684516907,
+        -0.9999082684516907,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 146,
+      "max": [
+        0.9065899848937988,
+        0.8710700273513794
+      ],
+      "min": [
+        0.09350000321865082,
+        0.08370000123977661
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 768,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "nulpointr (https://sketchfab.com/nulpointr)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/paintball-canpintree-bunker-dc0cd935e35d424e961c87d217ee2511",
+      "title": "Paintball \"Can/Pin/Tree\" Bunker"
+    },
+    "generator": "Sketchfab-12.67.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 3072,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 1168,
+      "byteOffset": 3072,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 3504,
+      "byteOffset": 4240,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 7744,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Scene_-_Root",
+      "pbrMetallicRoughness": {
+        "metallicFactor": 0.2883003048780488,
+        "roughnessFactor": 0.27877286585365846
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "can_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        2666.41650390625,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        5.920633991754465e-13,
+        -2666.41650390625,
+        0.0,
+        0.0,
+        2666.41650390625,
+        5.920633991754465e-13,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "Root"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        0.14905000000000002,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.14905000000000002,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.01728,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "can"
+    },
+    {
+      "mesh": 0,
+      "name": "can_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}

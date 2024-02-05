@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://buakljc5raqkh"]
+
+[resource]
+resource_name = "Scene_-_Root"
+metallic = 0.343178
+roughness = 0.229992

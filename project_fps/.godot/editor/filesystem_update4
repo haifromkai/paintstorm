@@ -1,3 +1,11 @@
 res://Scenes/world.tscn
+res://Environments/day.tres
+res://Scenes/wall.tscn
+res://Scenes/sm-temple.tscn
+res://Scenes/snake.tscn
+res://Environments/sunset.tres
+res://Scenes/cake.tscn
 res://Scenes/dorito.tscn
-res://Scripts/player.gd
+res://Scenes/pin.tscn
+res://Scenes/tower.tscn
+res://Scenes/brick.tscn
