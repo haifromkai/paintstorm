@@ -48,7 +48,6 @@ transform = Transform3D(4.7, 0, 0, 0, -1.65797e-07, 4.179, 0, -3.793, -1.8267e-0
 disable_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="dorito/StaticBody3D"]
-visible = false
 shape = SubResource("ConvexPolygonShape3D_u3fu8")
 
 [node name="m-dorito_0" type="MeshInstance3D" parent="dorito"]
