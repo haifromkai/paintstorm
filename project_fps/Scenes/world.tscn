@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://dag0g2egxrx4l"]
 
-[ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_fwaf1"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
+[ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_o81cn"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p3b3g"]
 [ext_resource type="PackedScene" uid="uid://db7k4cwqj0gj6" path="res://Scenes/dorito.tscn" id="3_lqet0"]
 [ext_resource type="PackedScene" uid="uid://dc0a606tu04cm" path="res://Scenes/sm-temple.tscn" id="4_g0dll"]
@@ -50,7 +50,7 @@ albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
 [node name="world" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_fwaf1")
+environment = ExtResource("1_o81cn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.307831, 0.394006, 0, 0.78801, 0.615662, -0.5, 0.533178, -0.682438, 0, 0, 0)
@@ -135,28 +135,28 @@ metadata/_edit_lock_ = true
 
 [node name="50-bunkers" type="Node3D" parent="."]
 
-[node name="alpha" parent="50-bunkers" instance=ExtResource("11_nqddj")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-
-[node name="pin2" parent="50-bunkers" instance=ExtResource("10_oot1b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90757, 0, 0)
+[node name="pin50" parent="50-bunkers" instance=ExtResource("10_oot1b")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -7.18143, 0, 0)
 
 [node name="s50" parent="50-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.7, 0, 4.5, 0, -1.5299e-07, -11.5498, 0, 0)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, -11.5498, 0, 0)
 
 [node name="dwall" parent="50-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 4.7, 0, -4.5, 0, -1.5299e-07, 13.5244, 0, 0)
+transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 5, 0, -4.5, 0, -1.5299e-07, 13.5244, 0, 0)
 
 [node name="d5" parent="50-bunkers" instance=ExtResource("3_lqet0")]
 transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 7.25, 0, 0)
 
+[node name="alpha" parent="50-bunkers" instance=ExtResource("11_nqddj")]
+transform = Transform3D(-4.37114e-08, 0, 1.1, 0, 1.1, 0, -1, 0, -4.80825e-08, 0, 0, 0)
+
 [node name="n-bunkers" type="Node3D" parent="."]
 
 [node name="start" parent="n-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 4.5, 0, -4.5, 0, -1.5299e-07, 0, 0, -22.559)
+transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 5, 0, -4.5, 0, -1.5299e-07, 0, 0, -22.559)
 
 [node name="home" parent="n-bunkers" instance=ExtResource("4_g0dll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.67)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, -16.67)
 
 [node name="dcorner" parent="n-bunkers" instance=ExtResource("4_tlv60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.317, 0, -18.85)
@@ -165,7 +165,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.317, 0, -18.85)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.704, 0, -18.85)
 
 [node name="backpin" parent="n-bunkers" instance=ExtResource("10_oot1b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.499, 0, -19.095)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 5.499, 0, -19.095)
 
 [node name="d1" parent="n-bunkers" instance=ExtResource("3_lqet0")]
 transform = Transform3D(0.696997, 0, 0.327254, 0, 0.77, 0, -0.327254, 0, 0.696997, 10.584, 0, -15.046)
@@ -180,7 +180,7 @@ transform = Transform3D(0.10911, 0, -0.99403, 0, 1, 0, 0.99403, 0, 0.10911, 11.2
 transform = Transform3D(0.936758, 0, 0.349978, 0, 1, 0, -0.349978, 0, 0.936758, 6.544, 0, -9.553)
 
 [node name="god" parent="n-bunkers" instance=ExtResource("4_g0dll")]
-transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, -15.31, 0, -14.86)
+transform = Transform3D(1.1, 0, 0, 0, 0.825, 0, 0, 0, 1.1, -15.31, 0, -14.86)
 
 [node name="s1" parent="n-bunkers" instance=ExtResource("9_oif0x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.383, 0, -10.863)
@@ -192,10 +192,10 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -15.382, 0
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -15.382, 0, -1.66)
 
 [node name="swall1" parent="n-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.7, 0, 4.5, 0, -1.5299e-07, -11.55, 0, -7.535)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, -11.55, 0, -7.535)
 
 [node name="swall2" parent="n-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.7, 0, 4.5, 0, -1.5299e-07, -13.571, 0, -3.76)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, -13.571, 0, -3.76)
 
 [node name="entrybeam" parent="n-bunkers" instance=ExtResource("8_fh07x")]
 transform = Transform3D(0.737277, 0, -0.67559, 0, 1, 0, 0.67559, 0, 0.737277, -9.212, 0, -12.7811)
@@ -216,15 +216,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.656, 0, -5.829)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.656, 0, -1.735)
 
 [node name="santa" parent="n-bunkers" instance=ExtResource("4_tlv60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62, 0, -9.025)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62, 0, -9.61794)
+
+[node name="centerpin" parent="n-bunkers" instance=ExtResource("10_oot1b")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.15, 0, -4.371)
+
+[node name="centerwall" parent="n-bunkers" instance=ExtResource("7_28yi2")]
+transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 5, 0, -4.5, 0, -1.5299e-07, 1.91609, 0, -8.57654)
 
 [node name="s-bunkers" type="Node3D" parent="."]
 
 [node name="start" parent="s-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.5, 0, 4.5, 0, -1.5299e-07, 0, 0, 22.5593)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, 0, 0, 22.5593)
 
 [node name="home" parent="s-bunkers" instance=ExtResource("4_g0dll")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.6701)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 16.6701)
 
 [node name="dcorner" parent="s-bunkers" instance=ExtResource("4_tlv60")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3169, 0, 18.85)
@@ -233,10 +239,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3169, 0, 18.85)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7038, 0, 18.85)
 
 [node name="backpin" parent="s-bunkers" instance=ExtResource("10_oot1b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.49885, 0, 19.0949)
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 5.49885, 0, 19.0949)
 
 [node name="god" parent="s-bunkers" instance=ExtResource("4_g0dll")]
-transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, -15.3096, 0, 14.8601)
+transform = Transform3D(1.1, 0, 0, 0, 0.825, 0, 0, 0, 1.1, -15.3096, 0, 14.8601)
 
 [node name="d1" parent="s-bunkers" instance=ExtResource("3_lqet0")]
 transform = Transform3D(0.696997, 0, 0.327254, 0, 0.77, 0, -0.327254, 0, 0.696997, 10.5844, 4.76837e-07, 15.0459)
@@ -260,10 +266,10 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -15.3821, 
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -15.3821, 2.38419e-07, 1.65964)
 
 [node name="swall1" parent="s-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.7, 0, 4.5, 0, -1.5299e-07, -11.5499, 4.76837e-07, 7.53511)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, -11.5499, 4.76837e-07, 7.53511)
 
 [node name="swall2" parent="s-bunkers" instance=ExtResource("7_28yi2")]
-transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 4.7, 0, 4.5, 0, -1.5299e-07, -13.5714, 4.76837e-07, 3.75965)
+transform = Transform3D(-1.96701e-07, 0, -3.5, 0, 5, 0, 4.5, 0, -1.5299e-07, -13.5714, 4.76837e-07, 3.75965)
 
 [node name="entrybeam" parent="s-bunkers" instance=ExtResource("8_fh07x")]
 transform = Transform3D(0.737678, 0, 0.675153, 0, 1, 0, -0.675153, 0, 0.737678, -9.21189, 0, 12.81)
@@ -284,13 +290,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6559, 0, 5.82852)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6559, 0, 1.73465)
 
 [node name="santa" parent="s-bunkers" instance=ExtResource("4_tlv60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62046, 0, 9.02508)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.62, 0, 9.618)
 
-[node name="pin1" parent="s-bunkers" instance=ExtResource("10_oot1b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.149653, 0, 4.37111)
+[node name="centerpin" parent="s-bunkers" instance=ExtResource("10_oot1b")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.149653, 0, 4.37111)
+
+[node name="centerwall" parent="s-bunkers" instance=ExtResource("7_28yi2")]
+transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 5, 0, -4.5, 0, -1.5299e-07, 1.916, 0, 8.577)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.361463, 1, 25.8761)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.649263, 1, 25.7983)
+visible = false
 script = ExtResource("1_p3b3g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]

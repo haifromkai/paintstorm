@@ -48,7 +48,7 @@ points = PackedVector3Array(-0.39559, -0.0653125, 1e-05, -0.39559, -0.0716719, 0
 [node name="brick" type="Node3D"]
 
 [node name="brick" type="StaticBody3D" parent="."]
-transform = Transform3D(-2.09815e-07, -7.6, -4.37114e-07, 0, -3.32207e-07, 10, -4.8, 3.32207e-07, 1.91069e-14, 0, 0, 0)
+transform = Transform3D(-2.18557e-07, -7.6, -4.80825e-07, 0, -3.32207e-07, 11, -5, 3.32207e-07, 2.10175e-14, 0, 0, 0)
 
 [node name="brick" type="MeshInstance3D" parent="brick"]
 mesh = SubResource("ArrayMesh_gustw")
