@@ -14,6 +14,10 @@ config/name="project_fps"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[debug]
+
+shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.419608)
+
 [display]
 
 window/size/viewport_height=1000

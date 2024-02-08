@@ -1,0 +1,11 @@
+Model Information:
+* title:	Training Dummy
+* source:	https://sketchfab.com/3d-models/training-dummy-a5b3fbc86b45454fb3cc971b09667c76
+* author:	Zachary Kirchens (https://sketchfab.com/yktg_zx)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Training Dummy" (https://sketchfab.com/3d-models/training-dummy-a5b3fbc86b45454fb3cc971b09667c76) by Zachary Kirchens (https://sketchfab.com/yktg_zx) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

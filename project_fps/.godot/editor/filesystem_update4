@@ -1,5 +1,9 @@
 res://Scenes/world.tscn
-res://Environments/sunset.tres
-res://Textures/dorito-skin.tres
-res://Environments/night.tres
 res://Environments/day.tres
+res://Textures/dorito-skin.tres
+res://Scripts/player.gd
+res://Environments/sunset.tres
+res://Scenes/player.tscn
+res://Scenes/player.gd
+res://Scripts/player_v2
+res://Scripts/player_v2.gd

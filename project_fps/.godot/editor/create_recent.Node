@@ -1,5 +1,8 @@
+Camera3D
+CollisionShape3D
+CharacterBody3D
+CharacterBody2D
 Node3D
 StaticBody3D
-CollisionShape3D
 OmniLight3D
 CSGBox3D

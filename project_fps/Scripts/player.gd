@@ -6,8 +6,8 @@ var gravity = 9.8
 
 # Movement variables
 const SENSITIVITY = 0.0005
-const WALK_SPEED = 3.6
-const SPRINT_SPEED = 6.6
+const WALK_SPEED = 4.0
+const SPRINT_SPEED = 6.7
 var speed
 
 # Bob variables
@@ -17,7 +17,7 @@ var t_bob = 0.0
 
 # FOV variables
 const BASE_FOV = 75.0
-const FOV_CHANGE = 1.2
+const FOV_CHANGE = 1.1
 
 # Define onready variables so we can use head and camera var later
 @onready var head = $head
@@ -44,11 +44,11 @@ func _unhandled_input(event):
 func _physics_process(delta):
 	# Add Gravity. Decrement from y velocity the falling speed due to gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta * 1.4
+		velocity.y -= gravity * delta * 1.7
 
 	# Handle Jump. Player presses space AND is on floor.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY * 1.1
+		velocity.y = JUMP_VELOCITY * 1.3
 
 	# Handle Sprint
 	if Input.is_action_pressed("sprint"):
@@ -68,12 +68,17 @@ func _physics_process(delta):
 	if is_on_floor():
 		# how fast we move
 		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 8.0)
+			velocity.y = lerp(velocity.y, direction.y * speed, delta * 8.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 8.0)
+		# if direction:
+			# velocity.x = direction.x * speed
+			# velocity.z = direction.z * speed
 		# how fast we stop (using intertia)
 		else:
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 10.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 10.0)
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 11.0)
+			velocity.y = lerp(velocity.y, direction.y * speed, delta * 3.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 11.0)
 	# while in air (using intertia)
 	else:
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 1.5)
