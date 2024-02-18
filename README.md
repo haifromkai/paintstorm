@@ -37,6 +37,12 @@ Environment: Sunset
 Environment: Night
 ![fpsgame_7](https://github.com/haifromkai/project_fps/assets/49883801/0445dd86-4d7e-4efb-8e7e-2b4f65970075)
 
+Bot
+![image](https://github.com/haifromkai/project_fps/assets/49883801/50cc9c91-26b1-4148-bc9d-b74a93d0e05a)
+
+Marker and Paintball Models
+![markershot](https://github.com/haifromkai/project_fps/assets/49883801/19c88788-3b3e-48ab-a5f8-b528497b2f24)
+
 # Contact
 Kai Fang - (KaiGdev@gmail.com) <br>
 Project Link: https://github.com/haifromkai/project_fps
