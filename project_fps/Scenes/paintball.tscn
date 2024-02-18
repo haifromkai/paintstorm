@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://bcthhirm1xvde"]
+
+[sub_resource type="GDScript" id="GDScript_d7pxd"]
+script/source = "extends Node3D
+
+const SPEED = 98.0
+
+@onready var mesh = $MeshInstance3D
+@onready var ray = $RayCast3D
+@onready var particles = $GPUParticles3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	# movement of bullet is -z direction
+	position += transform.basis * Vector3(0, 0, -SPEED) * delta
+
+	# GPU Particle Animation
+	# check if raycast is colliding
+	if ray.is_colliding():
+		# if it is, turn off mesh visibilty and turn on gpu particle instead
+		mesh.visible = false
+		particles.emitting = true
+		# wait 1s until particles done emitting 
+		await get_tree().create_timer(1.0).timeout
+		# delete the paintball
+		queue_free()
+
+func _on_timer_timeout():
+	queue_free()
+"
+
+[sub_resource type="SphereMesh" id="SphereMesh_4qb1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ypb"]
+albedo_color = Color(1, 0.341176, 0.764706, 1)
+roughness = 0.12
+emission = Color(0.839216, 0.560784, 0.960784, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8o7kd"]
+albedo_color = Color(1, 0.341176, 0.764706, 1)
+emission_enabled = true
+emission = Color(1, 0.176471, 0.741176, 1)
+emission_energy_multiplier = 8.0
+
+[sub_resource type="Curve" id="Curve_yupri"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ec03k"]
+curve = SubResource("Curve_yupri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4lswb"]
+direction = Vector3(0, 0, 1)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+hue_variation_curve = SubResource("CurveTexture_ec03k")
+
+[sub_resource type="SphereMesh" id="SphereMesh_akai7"]
+radius = 0.03
+height = 0.06
+
+[node name="paintball" type="Node3D"]
+script = SubResource("GDScript_d7pxd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)
+mesh = SubResource("SphereMesh_4qb1u")
+surface_material_override/0 = SubResource("StandardMaterial3D_t6ypb")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+target_position = Vector3(0, 0, -0.8)
+collision_mask = 3
+hit_from_inside = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0355967)
+layers = 3
+material_override = SubResource("StandardMaterial3D_8o7kd")
+emitting = false
+one_shot = true
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4lswb")
+draw_pass_1 = SubResource("SphereMesh_akai7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

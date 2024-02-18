@@ -1,0 +1,11 @@
+Model Information:
+* title:	Paintball Gun
+* source:	https://sketchfab.com/3d-models/paintball-gun-c9f3b8079102454fb9d3fc628ff0ad8b
+* author:	miraclejudy3 (https://sketchfab.com/miraclejudy3)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Paintball Gun" (https://sketchfab.com/3d-models/paintball-gun-c9f3b8079102454fb9d3fc628ff0ad8b) by miraclejudy3 (https://sketchfab.com/miraclejudy3) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

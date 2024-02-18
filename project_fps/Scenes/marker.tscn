@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://br6ts5nskhc0m"]
+
+[ext_resource type="PackedScene" uid="uid://7eeqcgcofx45" path="res://Models/paintball_gun/scene.gltf" id="1_q3id4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ra71"]
+albedo_color = Color(0.843137, 0.843137, 0.933333, 1)
+metallic = 0.6
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf304"]
+albedo_color = Color(0.843137, 0.843137, 0.933333, 1)
+metallic = 0.52
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tx6ub"]
+albedo_color = Color(0.843137, 0.843137, 0.933333, 1)
+metallic = 0.52
+roughness = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68gvj"]
+albedo_color = Color(0.843137, 0.843137, 0.933333, 1)
+
+[sub_resource type="Animation" id="Animation_jh6yu"]
+resource_name = "fire"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.1),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.009), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_20gxr"]
+_data = {
+"fire": SubResource("Animation_jh6yu")
+}
+
+[node name="marker" instance=ExtResource("1_q3id4")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+
+[node name="Decal logo_SET01_0" parent="Sketchfab_model/f99b70af8d2a47e5a44ef68d9df62afc_fbx/RootNode/Decal logo" index="0"]
+material_override = SubResource("StandardMaterial3D_3ra71")
+cast_shadow = 0
+
+[node name="real gas tank_Material_001_0" parent="Sketchfab_model/f99b70af8d2a47e5a44ef68d9df62afc_fbx/RootNode/real gas tank" index="0"]
+material_override = SubResource("StandardMaterial3D_jf304")
+cast_shadow = 0
+
+[node name=" gas Cylinder__Material_002_0" parent="Sketchfab_model/f99b70af8d2a47e5a44ef68d9df62afc_fbx/RootNode/ gas Cylinder_" index="0"]
+material_override = SubResource("StandardMaterial3D_tx6ub")
+cast_shadow = 0
+
+[node name="nail_Material_003_0" parent="Sketchfab_model/f99b70af8d2a47e5a44ef68d9df62afc_fbx/RootNode/nail" index="0"]
+material_override = SubResource("StandardMaterial3D_68gvj")
+cast_shadow = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_20gxr")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.335052, -0.375735)
+target_position = Vector3(0, 0, -1)

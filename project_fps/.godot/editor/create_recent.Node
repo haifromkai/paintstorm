@@ -1,8 +1,13 @@
-Camera3D
-CollisionShape3D
-CharacterBody3D
-CharacterBody2D
+Timer
+GPUParticles3D
+RayCast3D
+MeshInstance3D
+AnimationPlayer
 Node3D
+Camera3D
+CharacterBody3D
+CollisionShape3D
+CharacterBody2D
 StaticBody3D
 OmniLight3D
 CSGBox3D

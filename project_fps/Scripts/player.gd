@@ -5,7 +5,7 @@ const JUMP_VELOCITY = 5.0
 var gravity = 9.8
 
 # Movement variables
-const SENSITIVITY = 0.0005
+const SENSITIVITY = 0.0006
 const WALK_SPEED = 4.0
 const SPRINT_SPEED = 6.7
 var speed
@@ -17,11 +17,17 @@ var t_bob = 0.0
 
 # FOV variables
 const BASE_FOV = 75.0
-const FOV_CHANGE = 1.1
+const FOV_CHANGE = 0.75
+
+# Paintball variables
+var paintball = load("res://Scenes/paintball.tscn")
+var instance
 
 # Define onready variables so we can use head and camera var later
 @onready var head = $head
 @onready var camera = $head/Camera3D
+@onready var marker_anim = $head/Camera3D/marker/AnimationPlayer
+@onready var marker_barrel = $head/Camera3D/marker/RayCast3D
 
 
 # Disable cursor 
@@ -39,6 +45,7 @@ func _unhandled_input(event):
 
 		# limit camera y angle rotation by clamping camera.rotation.x b/n -55 and 55 degrees
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-55), deg_to_rad(55))
+
 
 
 func _physics_process(delta):
@@ -95,6 +102,26 @@ func _physics_process(delta):
 		camera.fov = lerp(camera.fov, target_fov, delta * 2.0)
 	else:
 		camera.fov = lerp(camera.fov, BASE_FOV, delta * 6.0)
+
+
+	# Firing
+	if Input.is_action_pressed("fire"):
+		if !marker_anim.is_playing():
+			marker_anim.play("fire")
+
+			# instantiate() creates a new object from the loaded paintball scene
+			instance = paintball.instantiate()
+			# set position of new paintball to global position of marker barrel raycast
+			instance.position = marker_barrel.global_position
+			# set transform basis or rotation of new paintball to marker barrel raycast
+			instance.transform.basis = marker_barrel.global_transform.basis
+			# parent is the world, add instance as child
+			get_parent().add_child(instance)
+
+
+
+
+
 
 	move_and_slide()
 
