@@ -43,6 +43,9 @@ Bot
 Marker and Paintball Models
 ![markershot](https://github.com/haifromkai/project_fps/assets/49883801/19c88788-3b3e-48ab-a5f8-b528497b2f24)
 
+Firing and Collision Animation
+https://github.com/haifromkai/project_fps/assets/49883801/21486991-6505-475c-9280-4f0f312cd29a
+
 # Contact
 Kai Fang - (KaiGdev@gmail.com) <br>
 Project Link: https://github.com/haifromkai/project_fps
