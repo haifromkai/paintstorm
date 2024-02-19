@@ -6,8 +6,8 @@ var gravity = 9.8
 
 # Movement variables
 const SENSITIVITY = 0.0006
-const WALK_SPEED = 4.0
-const SPRINT_SPEED = 6.7
+const WALK_SPEED = 3.2
+const SPRINT_SPEED = 6.6
 var speed
 
 # Bob variables
@@ -28,7 +28,8 @@ var instance
 @onready var camera = $head/Camera3D
 @onready var marker_anim = $head/Camera3D/marker/AnimationPlayer
 @onready var marker_barrel = $head/Camera3D/marker/RayCast3D
-
+@onready var marker_fire_audio = $head/Camera3D/marker/marker_fire
+@onready var marker_smoke = $head/Camera3D/marker/GPUParticles3D
 
 # Disable cursor 
 func _ready():
@@ -109,6 +110,9 @@ func _physics_process(delta):
 		if !marker_anim.is_playing():
 			marker_anim.play("fire")
 
+			# play sound effect
+			marker_fire_audio.play()
+
 			# instantiate() creates a new object from the loaded paintball scene
 			instance = paintball.instantiate()
 			# set position of new paintball to global position of marker barrel raycast
@@ -118,7 +122,8 @@ func _physics_process(delta):
 			# parent is the world, add instance as child
 			get_parent().add_child(instance)
 
-
+			# play smoke animation
+			marker_smoke.emitting = true
 
 
 

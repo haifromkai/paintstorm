@@ -1,8 +1,9 @@
-Timer
 GPUParticles3D
 RayCast3D
-MeshInstance3D
 AnimationPlayer
+AudioStreamPlayer3D
+Timer
+MeshInstance3D
 Node3D
 Camera3D
 CharacterBody3D

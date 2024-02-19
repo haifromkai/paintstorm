@@ -1,6 +1,6 @@
 extends Node3D
 
-const SPEED = 98.0
+const SPEED = 110.0
 
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
@@ -24,7 +24,7 @@ func _process(delta):
 		mesh.visible = false
 		particles.emitting = true
 		# wait 1s until particles done emitting 
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(1.1).timeout
 		# delete the paintball
 		queue_free()
 

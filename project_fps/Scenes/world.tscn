@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=24 format=3 uid="uid://dag0g2egxrx4l"]
 
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_25nxs"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cdx0u5g0pfcyd" path="res://Scenes/brick.tscn" id="11_nqddj"]
 [ext_resource type="PackedScene" uid="uid://bjxlbx6wj6jlk" path="res://Scenes/bot.tscn" id="12_qkqh3"]
 [ext_resource type="PackedScene" uid="uid://br6ts5nskhc0m" path="res://Scenes/marker.tscn" id="13_lvfld"]
+[ext_resource type="AudioStream" uid="uid://bxbfld350m3ig" path="res://Audio/marker_fire.wav" id="14_esrle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4vwg"]
 albedo_texture = ExtResource("1_n5hcc")
@@ -46,8 +47,7 @@ albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qvwcc"]
-points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
 
 [node name="world" type="Node3D"]
 
@@ -56,6 +56,7 @@ environment = ExtResource("1_25nxs")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.307831, 0.394006, 0, 0.78801, 0.615662, -0.5, 0.533178, -0.682438, 0, 0, 0)
+visible = false
 shadow_enabled = true
 shadow_opacity = 0.8
 
@@ -326,18 +327,18 @@ transform = Transform3D(0.835232, 0, 0.549898, 0, 1, 0, -0.549898, 0, 0.835232, 
 transform = Transform3D(0.999721, 0, 0.0236127, 0, 1, 0, -0.0236127, 0, 0.999721, -15.4765, 0, 0.705069)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.973497, 26.3747)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.772, 0.972283, -7.5315)
 script = ExtResource("1_p3b3g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
 transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, -0.113, 0)
+visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_he70r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, -0.113, 0)
-visible = false
-shape = SubResource("ConvexPolygonShape3D_qvwcc")
+shape = SubResource("CapsuleShape3D_7x0lq")
 
 [node name="head" type="Node3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
@@ -346,4 +347,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538736, -0.0717591, 0.0539341)
 
 [node name="marker" parent="player/head/Camera3D" instance=ExtResource("13_lvfld")]
-transform = Transform3D(0.496865, -0.00444155, -0.055726, 0.0034901, 0.499912, -0.00872621, 0.0557936, 0.00828251, 0.496808, 0.083, -0.219, -0.108)
+transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, -0.00872619, 0.0557936, 0.00828251, 0.496808, 0.0830002, -0.219, -0.108)
+
+[node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
+transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
+stream = ExtResource("14_esrle")
+volume_db = -1.0
+max_db = 0.0
+pitch_scale = 0.96
+panning_strength = 0.9
+attenuation_filter_cutoff_hz = 20500.0
