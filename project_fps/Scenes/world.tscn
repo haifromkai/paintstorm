@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=27 format=3 uid="uid://dag0g2egxrx4l"]
 
-[ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_25nxs"]
+[ext_resource type="Environment" uid="uid://di1ckegjuhhmu" path="res://Environments/night.tres" id="1_0n5m0"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p3b3g"]
 [ext_resource type="PackedScene" uid="uid://db7k4cwqj0gj6" path="res://Scenes/dorito.tscn" id="3_lqet0"]
@@ -45,14 +45,90 @@ albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypnte"]
 albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
+radius = 0.264706
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
+radius = 0.264706
+
+[sub_resource type="Animation" id="Animation_04oh5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_dcbo6"]
+resource_name = "crouch"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.25]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.33, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.583256, 0.0474529), Vector3(0, 0.05, 0.047)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.25]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tssfl"]
+_data = {
+"RESET": SubResource("Animation_04oh5"),
+"crouching": SubResource("Animation_dcbo6")
+}
 
 [node name="world" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_25nxs")
+environment = ExtResource("1_0n5m0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.307831, 0.394006, 0, 0.78801, 0.615662, -0.5, 0.533178, -0.682438, 0, 0, 0)
@@ -327,18 +403,18 @@ transform = Transform3D(0.835232, 0, 0.549898, 0, 1, 0, -0.549898, 0, 0.835232, 
 transform = Transform3D(0.999721, 0, 0.0236127, 0, 1, 0, -0.0236127, 0, 0.999721, -15.4765, 0, 0.705069)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154073, 0.972283, 21.6302)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 25.3234)
+floor_snap_length = 0.0
 script = ExtResource("1_p3b3g")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
-transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, -0.113, 0)
-visible = false
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_7x0lq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player/CollisionShape3D"]
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_he70r")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
-transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, -0.113, 0)
-shape = SubResource("CapsuleShape3D_7x0lq")
+skeleton = NodePath("../..")
 
 [node name="head" type="Node3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
@@ -354,6 +430,11 @@ transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.033
 stream = ExtResource("14_esrle")
 volume_db = -6.0
 max_db = 0.0
-pitch_scale = 0.96
+pitch_scale = 0.98
 panning_strength = 0.9
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
+libraries = {
+"": SubResource("AnimationLibrary_tssfl")
+}

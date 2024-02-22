@@ -1,4 +1,6 @@
 res://Scenes/world.tscn
-res://Environments/sunset.tres
+res://Environments/night.tres
 res://Textures/dorito-skin.tres
 res://Scenes/main_menu.tscn
+res://Scenes/paintball.tscn
+res://Scenes/bot.tscn

@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cckifbwm1j5wd"]
+[gd_scene load_steps=7 format=3 uid="uid://cckifbwm1j5wd"]
 
 [ext_resource type="FontFile" uid="uid://dd5dfv1s6yrtg" path="res://Fonts/YumeNikkiTitleScreen.ttf" id="1_07v7t"]
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c3rfx"]
 [ext_resource type="AudioStream" uid="uid://d3ooovthasyrv" path="res://Audio/valorant_menu_music_act6.mp3" id="3_5hu1e"]
 [ext_resource type="Texture2D" uid="uid://c8hiajx0a4a1k" path="res://Textures/fpsgame_8.png" id="3_e08ve"]
 [ext_resource type="AudioStream" uid="uid://ly8s53h43ofo" path="res://Audio/ui_selected.mp3" id="4_0khou"]
+[ext_resource type="AudioStream" uid="uid://c53xc3483lmpm" path="res://Audio/menu_sound.wav" id="4_5rhie"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -39,12 +40,18 @@ texture = ExtResource("3_e08ve")
 
 [node name="Background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_5hu1e")
-volume_db = -10.0
+volume_db = -7.0
 autoplay = true
+
+[node name="Selector" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5rhie")
+volume_db = -4.0
+max_polyphony = 10
 
 [node name="Selected" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0khou")
-volume_db = -10.0
+volume_db = -7.0
+pitch_scale = 1.34
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1

@@ -1,4 +1,6 @@
 AudioStreamPlayer
+AudioStreamPlayer3D
+AnimationPlayer
 VideoStreamPlayer
 TextureRect
 MarginContainer
@@ -10,5 +12,3 @@ VBoxContainer
 Button
 Control
 GPUParticles3D
-RayCast3D
-AnimationPlayer

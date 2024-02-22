@@ -6,6 +6,7 @@ const GRAVITY = 9.8
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
 @onready var particles = $GPUParticles3D
+@onready var hit_sound = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +26,8 @@ func _process(delta):
 		# if it is, turn off mesh visibilty and turn on gpu particle instead
 		mesh.visible = false
 		particles.emitting = true
+		# play sound when paintball hits
+		hit_sound.play()
 		# wait 1s until particles done emitting 
 		await get_tree().create_timer(1.1).timeout
 		# delete the paintball

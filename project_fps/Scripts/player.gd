@@ -7,6 +7,7 @@ var gravity = 9.8
 # Movement variables
 const SENSITIVITY = 0.0006
 const WALK_SPEED = 3.2
+const CROUCH_SPEED = 2.0
 const SPRINT_SPEED = 6.6
 var speed
 
@@ -30,6 +31,8 @@ var instance
 @onready var marker_barrel = $head/Camera3D/marker/RayCast3D
 @onready var marker_fire_audio = $head/Camera3D/marker/marker_fire
 @onready var marker_smoke = $head/Camera3D/marker/GPUParticles3D
+@onready var crouch_anim = $AnimationPlayer
+
 
 # Disable cursor 
 func _ready():
@@ -48,30 +51,28 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-55), deg_to_rad(55))
 
 
-
 func _physics_process(delta):
 	# Add Gravity. Decrement from y velocity the falling speed due to gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 1.7
 
-	# Handle Jump. Player presses space AND is on floor.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	# Jump Handling (cant jump when holding crouch)
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !Input.is_action_pressed("crouch"):
 		velocity.y = JUMP_VELOCITY * 1.3
 
-	# Handle Sprint
+	# Speed Handling
 	if Input.is_action_pressed("sprint"):
 		speed = SPRINT_SPEED
+	elif Input.is_action_pressed("crouch"):
+		speed = CROUCH_SPEED
 	else:
 		speed = WALK_SPEED
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	# Movement Handling (Get input direction and handle the movement/deceleration)
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-	# Implement Intertia
-		# Implement Speed
-
+	# Implement Intertia and Speed
 	# while on ground...	
 	if is_on_floor():
 		# how fast we move
@@ -110,6 +111,11 @@ func _physics_process(delta):
 			# play sound effect
 			marker_fire_audio.play()
 
+			# emit smoke particle (.restart() allows consecutive emits)
+			marker_smoke.emitting = true
+			marker_smoke.restart()
+			
+
 			# instantiate() creates a new object from the loaded paintball scene
 			instance = paintball.instantiate()
 			# set position of new paintball to global position of marker barrel raycast
@@ -119,8 +125,17 @@ func _physics_process(delta):
 			# parent is the world, add instance as child
 			get_parent().add_child(instance)
 
-			# play smoke animation
-			marker_smoke.emitting = true
+
+	
+
+
+	# Crouch Handling (cant crouch when sprinting)
+	# stuck on how to play animation just once when crouch is held, SCREEN JITTERING
+	# MY ATTEMPT
+	if Input.is_action_pressed("crouch") and is_on_floor() and !Input.is_action_pressed("sprint"):
+		crouch_anim.play("crouching", 0.0, 1.0)
+	else:
+		crouch_anim.play("crouching", 0.0, -1.0)
 
 
 
