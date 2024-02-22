@@ -1,6 +1,7 @@
 extends Node3D
 
-const SPEED = 110.0
+const SPEED = 110
+const GRAVITY = 9.8
 
 @onready var mesh = $MeshInstance3D
 @onready var ray = $RayCast3D
@@ -14,8 +15,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	# movement of bullet is -z direction
+	# movement of bullet is -z direction (original code)
 	position += transform.basis * Vector3(0, 0, -SPEED) * delta
+
 
 	# GPU Particle Animation
 	# check if raycast is colliding

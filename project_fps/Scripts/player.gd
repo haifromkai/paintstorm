@@ -79,9 +79,6 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 8.0)
 			velocity.y = lerp(velocity.y, direction.y * speed, delta * 8.0)
 			velocity.z = lerp(velocity.z, direction.z * speed, delta * 8.0)
-		# if direction:
-			# velocity.x = direction.x * speed
-			# velocity.z = direction.z * speed
 		# how fast we stop (using intertia)
 		else:
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 11.0)

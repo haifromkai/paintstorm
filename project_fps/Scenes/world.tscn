@@ -327,7 +327,7 @@ transform = Transform3D(0.835232, 0, 0.549898, 0, 1, 0, -0.549898, 0, 0.835232, 
 transform = Transform3D(0.999721, 0, 0.0236127, 0, 1, 0, -0.0236127, 0, 0.999721, -15.4765, 0, 0.705069)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.772, 0.972283, -7.5315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.154073, 0.972283, 21.6302)
 script = ExtResource("1_p3b3g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
@@ -352,7 +352,7 @@ transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, 
 [node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
 transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
 stream = ExtResource("14_esrle")
-volume_db = -1.0
+volume_db = -6.0
 max_db = 0.0
 pitch_scale = 0.96
 panning_strength = 0.9
