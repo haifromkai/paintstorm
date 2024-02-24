@@ -1,6 +1,14 @@
+res://Scripts/bot2.gd
+res://Scripts/player.gd
 res://Scenes/world.tscn
-res://Environments/night.tres
+res://Environments/sunset.tres
 res://Textures/dorito-skin.tres
 res://Scenes/main_menu.tscn
-res://Scenes/paintball.tscn
-res://Scenes/bot.tscn
+res://Models/bot/bot.tscn
+res://Scripts/paintball.gd
+res://Scripts/setting.gd
+res://Models/marker/paintball.tscn
+res://Models/bunkers/brick.tscn
+res://Models/bunkers/wall.tscn
+res://Models/bunkers/sm-temple.tscn
+res://Models/bunkers/cake.tscn

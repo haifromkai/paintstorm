@@ -1,18 +1,21 @@
-[gd_scene load_steps=27 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=30 format=3 uid="uid://dag0g2egxrx4l"]
 
-[ext_resource type="Environment" uid="uid://di1ckegjuhhmu" path="res://Environments/night.tres" id="1_0n5m0"]
+[ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p3b3g"]
-[ext_resource type="PackedScene" uid="uid://db7k4cwqj0gj6" path="res://Scenes/dorito.tscn" id="3_lqet0"]
-[ext_resource type="PackedScene" uid="uid://dc0a606tu04cm" path="res://Scenes/sm-temple.tscn" id="4_g0dll"]
-[ext_resource type="PackedScene" uid="uid://ctlpp1lt6vm73" path="res://Scenes/tower.tscn" id="4_tlv60"]
-[ext_resource type="PackedScene" uid="uid://bdtonh63dm0xx" path="res://Scenes/wall.tscn" id="7_28yi2"]
-[ext_resource type="PackedScene" uid="uid://bsbjdnok0dp7g" path="res://Scenes/snake.tscn" id="8_fh07x"]
-[ext_resource type="PackedScene" uid="uid://bfq0fnahslq78" path="res://Scenes/cake.tscn" id="9_oif0x"]
-[ext_resource type="PackedScene" uid="uid://brit76lvymuu" path="res://Scenes/pin.tscn" id="10_oot1b"]
-[ext_resource type="PackedScene" uid="uid://cdx0u5g0pfcyd" path="res://Scenes/brick.tscn" id="11_nqddj"]
-[ext_resource type="PackedScene" uid="uid://bjxlbx6wj6jlk" path="res://Scenes/bot.tscn" id="12_qkqh3"]
-[ext_resource type="PackedScene" uid="uid://br6ts5nskhc0m" path="res://Scenes/marker.tscn" id="13_lvfld"]
+[ext_resource type="Script" path="res://Scripts/setting.gd" id="3_6oncn"]
+[ext_resource type="PackedScene" uid="uid://bty01mgvk30yr" path="res://Models/foliage/sand_dunes/sand_dune.tscn" id="3_b00ao"]
+[ext_resource type="PackedScene" uid="uid://db7k4cwqj0gj6" path="res://Models/bunkers/dorito.tscn" id="3_lqet0"]
+[ext_resource type="PackedScene" uid="uid://dc0a606tu04cm" path="res://Models/bunkers/sm-temple.tscn" id="4_g0dll"]
+[ext_resource type="PackedScene" uid="uid://b1cbpvwe2psoc" path="res://Models/foliage/palm_tree/palm_tree.tscn" id="4_l4fl8"]
+[ext_resource type="PackedScene" uid="uid://ctlpp1lt6vm73" path="res://Models/bunkers/tower.tscn" id="4_tlv60"]
+[ext_resource type="PackedScene" uid="uid://bdtonh63dm0xx" path="res://Models/bunkers/wall.tscn" id="7_28yi2"]
+[ext_resource type="PackedScene" uid="uid://bsbjdnok0dp7g" path="res://Models/bunkers/snake.tscn" id="8_fh07x"]
+[ext_resource type="PackedScene" uid="uid://bfq0fnahslq78" path="res://Models/bunkers/cake.tscn" id="9_oif0x"]
+[ext_resource type="PackedScene" uid="uid://brit76lvymuu" path="res://Models/bunkers/pin.tscn" id="10_oot1b"]
+[ext_resource type="PackedScene" uid="uid://cdx0u5g0pfcyd" path="res://Models/bunkers/brick.tscn" id="11_nqddj"]
+[ext_resource type="PackedScene" uid="uid://bjxlbx6wj6jlk" path="res://Models/bot/bot.tscn" id="12_qkqh3"]
+[ext_resource type="PackedScene" uid="uid://br6ts5nskhc0m" path="res://Models/marker/marker.tscn" id="13_lvfld"]
 [ext_resource type="AudioStream" uid="uid://bxbfld350m3ig" path="res://Audio/marker_fire.wav" id="14_esrle"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4vwg"]
@@ -28,7 +31,7 @@ uv1_triplanar_sharpness = 4.22
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x5sx7"]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0.176471, 0.160784, 0.160784, 0.784314)
+albedo_color = Color(0.176471, 0.160784, 0.160784, 0.627451)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uvmv"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
@@ -42,14 +45,9 @@ albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbvxh"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypnte"]
-albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
-radius = 0.264706
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
-radius = 0.264706
 
 [sub_resource type="Animation" id="Animation_04oh5"]
 length = 0.001
@@ -125,10 +123,13 @@ _data = {
 "crouching": SubResource("Animation_dcbo6")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypnte"]
+albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
+
 [node name="world" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_0n5m0")
+environment = ExtResource("1_32h18")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.307831, 0.394006, 0, 0.78801, 0.615662, -0.5, 0.533178, -0.682438, 0, 0, 0)
@@ -141,6 +142,36 @@ material_override = SubResource("StandardMaterial3D_b4vwg")
 use_collision = true
 size = Vector3(70, 0, 80)
 metadata/_edit_lock_ = true
+
+[node name="setting" type="Node3D" parent="."]
+script = ExtResource("3_6oncn")
+
+[node name="sand_dune1" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(-1.63661, 0.208556, -1.13049, 0.264985, 1.98229, -0.0179223, 1.11861, -0.164447, -1.64975, -114.146, 6.29816, 7.6266)
+
+[node name="sand_dune2" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(1.99872, -0.0567819, -0.0434103, 0.054971, 1.99757, -0.0818719, 0.045682, 0.0806264, 1.99785, -42.9394, -3.54135, -96.8512)
+
+[node name="sand_dune3" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(1.7725, -0.166146, 0.911397, 0.182321, 1.99165, 0.00849515, -0.908299, 0.0755544, 1.78025, 112.333, 7.4398, -47.1373)
+
+[node name="sand_dune4" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(-1.77727, -0.188837, -0.897578, -0.128031, 1.98907, -0.164959, 0.908248, -0.0891292, -1.77965, 94.2658, 4.51142, 59.2892)
+
+[node name="sand_dune5" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(2, 0, 0, 0, 1.9987, 0.0721014, 0, -0.0721014, 1.9987, -27.5388, 1.76049, 122.942)
+
+[node name="sand_dune6" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(1.91663, 0, -0.57141, 0, 2, 0, 0.57141, 0, 1.91663, 126.898, -0.517406, 1.0143)
+
+[node name="sand_dune7" parent="setting" instance=ExtResource("3_b00ao")]
+transform = Transform3D(0.593692, 0.227472, -1.89626, -0.15491, 1.98496, 0.189612, 1.90356, 0.0905889, 0.606845, -116.396, 8.16782, 6.30746)
+
+[node name="palm_tree1" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(1.30034, 0.105788, 0.364598, -0.0861634, 1.5965, -0.024159, -0.511556, 1.19681e-08, 0.930852, -24.2234, 0.10286, 5.28904)
+
+[node name="palm_tree2" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.744331, 0.00676461, -0.784369, -0.0377874, 1.39906, -0.0187457, 0.940502, 0.0508577, 0.620012, -26.9677, 0.0594664, 7.9462)
 
 [node name="net" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -377,33 +408,35 @@ transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0.149653, 0, 4.37111)
 [node name="centerwall" parent="s-bunkers" instance=ExtResource("7_28yi2")]
 transform = Transform3D(-1.96701e-07, 0, 3.5, 0, 5, 0, -4.5, 0, -1.5299e-07, 1.916, 0, 8.577)
 
-[node name="grid ruler" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216814, 0.5, 21.2919)
-visible = false
-transparency = 0.56
-cast_shadow = 0
-size = Vector3(3.048, 1, 3.048)
-material = SubResource("StandardMaterial3D_ypnte")
+[node name="bots" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.96046e-08, 0)
 
-[node name="grid ruler2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6602, 0.5, 18.2441)
-visible = false
-transparency = 0.56
-cast_shadow = 0
-size = Vector3(3.048, 1, 3.048)
-material = SubResource("StandardMaterial3D_ypnte")
+[node name="bot1" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.985331, 0, -0.170656, 0, 1, 0, 0.170656, 0, 0.985331, 14.8628, -5.96046e-08, -11.175)
 
-[node name="bot1" parent="." instance=ExtResource("12_qkqh3")]
-transform = Transform3D(0.985331, 0, -0.170656, 0, 1, 0, 0.170656, 0, 0.985331, 14.8628, 0, -11.175)
+[node name="bot2" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.835232, 0, 0.549898, 0, 1, 0, -0.549898, 0, 0.835232, -11.3136, -5.96046e-08, -8.32135)
 
-[node name="bot2" parent="." instance=ExtResource("12_qkqh3")]
-transform = Transform3D(0.835232, 0, 0.549898, 0, 1, 0, -0.549898, 0, 0.835232, -11.3136, 0, -8.32135)
+[node name="bot3" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.999721, 0, 0.0236127, 0, 1, 0, -0.0236127, 0, 0.999721, -15.4765, -5.96046e-08, 0.705069)
 
-[node name="bot3" parent="." instance=ExtResource("12_qkqh3")]
-transform = Transform3D(0.999721, 0, 0.0236127, 0, 1, 0, -0.0236127, 0, 0.999721, -15.4765, 0, 0.705069)
+[node name="bot4" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.861549, 0, -0.507673, 0, 1, 0, 0.507673, 0, 0.861549, -1.87065, -5.96046e-08, -1.2718)
+
+[node name="bot5" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.966331, 0, 0.257302, 0, 1, 0, -0.257302, 0, 0.966331, 11.2342, -5.96046e-08, -15.9853)
+
+[node name="bot6" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.995501, 0, 0.0947519, 0, 1, 0, -0.0947519, 0, 0.995501, -0.115721, -5.96046e-08, -18.3487)
+
+[node name="bot7" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.999948, 0, 0.0102456, 0, 1, 0, -0.0102456, 0, 0.999948, -16.0844, -5.96046e-08, -16.3486)
+
+[node name="bot8" parent="bots" instance=ExtResource("12_qkqh3")]
+transform = Transform3D(0.615841, -0.108254, 0.780398, 0.784723, -0.00416862, -0.619833, 0.0703527, 0.994114, 0.0823824, -11.2801, 0.207541, -3.80106)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 25.3234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5145, 0.88, 4.11588)
 floor_snap_length = 0.0
 script = ExtResource("1_p3b3g")
 
@@ -428,9 +461,8 @@ transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, 
 [node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
 transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
 stream = ExtResource("14_esrle")
-volume_db = -6.0
-max_db = 0.0
-pitch_scale = 0.98
+max_db = 2.0
+pitch_scale = 0.96
 panning_strength = 0.9
 attenuation_filter_cutoff_hz = 20500.0
 
@@ -438,3 +470,19 @@ attenuation_filter_cutoff_hz = 20500.0
 libraries = {
 "": SubResource("AnimationLibrary_tssfl")
 }
+
+[node name="grid ruler" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216814, 0.5, 21.2919)
+visible = false
+transparency = 0.56
+cast_shadow = 0
+size = Vector3(3.048, 1, 3.048)
+material = SubResource("StandardMaterial3D_ypnte")
+
+[node name="grid ruler2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.6602, 0.5, 18.2441)
+visible = false
+transparency = 0.56
+cast_shadow = 0
+size = Vector3(3.048, 1, 3.048)
+material = SubResource("StandardMaterial3D_ypnte")

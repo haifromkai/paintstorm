@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bty01mgvk30yr"]
+
+[ext_resource type="PackedScene" uid="uid://d1h18q35e22ik" path="res://Models/foliage/sand_dunes/scene.gltf" id="1_pjj4y"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_pjj4y")]

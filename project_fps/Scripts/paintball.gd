@@ -8,6 +8,7 @@ const GRAVITY = 9.8
 @onready var particles = $GPUParticles3D
 @onready var hit_sound = $AudioStreamPlayer
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -23,8 +24,10 @@ func _process(delta):
 	# GPU Particle Animation
 	# check if raycast is colliding
 	if ray.is_colliding():
-		# if it is, turn off mesh visibilty and turn on gpu particle instead
+		
+		# turn off mesh visibilty
 		mesh.visible = false
+		# turn on gpu particle
 		particles.emitting = true
 		# play sound when paintball hits
 		hit_sound.play()
@@ -32,6 +35,8 @@ func _process(delta):
 		await get_tree().create_timer(1.1).timeout
 		# delete the paintball
 		queue_free()
+
+
 
 func _on_timer_timeout():
 	queue_free()

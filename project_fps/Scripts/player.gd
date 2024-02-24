@@ -21,7 +21,7 @@ const BASE_FOV = 75.0
 const FOV_CHANGE = 0.75
 
 # Paintball variables
-var paintball = load("res://Scenes/paintball.tscn")
+var paintball = load("res://Models/marker/paintball.tscn")
 var instance
 
 # Define onready variables so we can use head and camera var later
@@ -34,8 +34,9 @@ var instance
 @onready var crouch_anim = $AnimationPlayer
 
 
-# Disable cursor 
+
 func _ready():
+	# Disable cursor 
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 

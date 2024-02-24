@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sand Dunes
+* source:	https://sketchfab.com/3d-models/sand-dunes-6bd9a0d96ef4463a8efd45af2be595ac
+* author:	Helindu (https://sketchfab.com/Helindu)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sand Dunes" (https://sketchfab.com/3d-models/sand-dunes-6bd9a0d96ef4463a8efd45af2be595ac) by Helindu (https://sketchfab.com/Helindu) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
