@@ -2,16 +2,16 @@ extends Control
 
 var current_selection = 0
 
-@onready var selector_one = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Selector
-@onready var selector_two = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
-@onready var selector_three = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
+@onready var selector_play = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer/Selector
+@onready var selector_option = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer/Selector
+@onready var selector_exit = $CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer/Selector
 @onready var selector_sound = $Selector
 @onready var selected_sound = $Selected
 @onready var background_music = $Background
 
 
 func _ready():
-	# initally place > on selector_one
+	# initally place > on selector_play
 	set_current_selection(0)
 	# hide mouse cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -54,15 +54,15 @@ func handle_selection(_current_selection):
 
 func set_current_selection(_current_selection):
 	# set all selector text to empty
-	selector_one.text = ''
-	selector_two.text = ''
-	selector_three.text = ''
+	selector_play.text = ''
+	selector_option.text = ''
+	selector_exit.text = ''
 
 	# check which selector should be set to >
 	if _current_selection == 0:
-		selector_one.text = '>'
+		selector_play.text = '>'
 	elif _current_selection == 1:
-		selector_two.text = '>'
+		selector_option.text = '>'
 	elif _current_selection == 2:
-		selector_three.text = '>'
+		selector_exit.text = '>'
 

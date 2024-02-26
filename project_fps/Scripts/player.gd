@@ -3,15 +3,17 @@ extends CharacterBody3D
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Gravity
 const jump_velocity = 5.0
-var gravity = 9.8
+const gravity = 9.8
 
 # Movement
 const sensitivity = 0.0006
 const walk_speed = 3.2
 const crouch_speed = 2.0
+const prone_speed = 2.0
 const sprint_speed = 6.3
 var speed
 var is_crouching = false
+var is_prone = false
 
 # Bob
 const bob_freq = 2.4
@@ -34,7 +36,7 @@ var instance
 @onready var marker_barrel = $head/Camera3D/marker/RayCast3D
 @onready var marker_fire_audio = $head/Camera3D/marker/marker_fire
 @onready var marker_smoke = $head/Camera3D/marker/GPUParticles3D
-@onready var crouch_anim = $AnimationPlayer
+@onready var player_anim = $AnimationPlayer
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 func _ready():
@@ -42,7 +44,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
-# Camera Rotation based on mouse motion
+# Camera Rotation
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		# when mouse moves up/down which controls y angle, rotate about the x axis
@@ -51,7 +53,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * sensitivity)
 
 		# limit camera y angle rotation by clamping camera.rotation.x b/n -55 and 55 degrees
-		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-55), deg_to_rad(55))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-55), deg_to_rad(30))
 
 
 func _physics_process(delta):
@@ -68,6 +70,8 @@ func _physics_process(delta):
 		speed = sprint_speed
 	elif Input.is_action_pressed("crouch"):
 		speed = crouch_speed
+	elif is_prone:
+		speed = prone_speed
 	else:
 		speed = walk_speed
 
@@ -106,17 +110,40 @@ func _physics_process(delta):
 	else:
 		camera.fov = lerp(camera.fov, base_fov, delta * 4.0)
 
-	# Crouch Handling (dont allow crouch when sprinting)
+	# Crouch Handling (hold)
 	# stay in crouch animation if ctrl is held down
 	if Input.is_action_pressed("crouch"):
+		# player has to be on ground and not holding sprint
 		if !is_crouching and is_on_floor() and !Input.is_action_pressed("sprint"):
-			crouch_anim.play("crouching")
+			player_anim.play("crouching")
 			is_crouching = true
 	# return to standing position if ctrl is let go
 	else:
 		if is_crouching:
-			crouch_anim.play_backwards("crouching")
+			player_anim.play_backwards("crouching")
 			is_crouching = false
+
+	# Prone Handling (toggle)
+	# Need to fix animations and not allow jump
+	if Input.is_action_just_pressed("prone"):
+	# 	# when player is standing
+		if !is_prone and is_on_floor() and !Input.is_action_pressed("sprint") and !Input.is_action_pressed("crouch"):
+			player_anim.play("stand_to_prone")
+			is_prone = true
+		elif is_prone and is_on_floor() and !Input.is_action_pressed("sprint") and !Input.is_action_pressed("crouch"):
+			player_anim.play_backwards("stand_to_prone")
+			is_prone = false
+
+	# 	# when player is crouching
+		# if !is_prone and is_crouching:
+		# 	player_anim.play("crouch_to_prone")
+		# 	is_prone = true
+		# elif is_prone:
+		# 	player_anim.play_backwards("crouch_to_prone")
+		# 	is_prone = false
+	
+
+
 
 	# Firing
 	if Input.is_action_pressed("fire"):

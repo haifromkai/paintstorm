@@ -1,14 +1,14 @@
+Camera3D
+AnimationPlayer
+VideoStreamPlayer
 Area3D
 StaticBody3D
 CollisionShape3D
 RigidBody3D
 CSGSphere3D
 Node3D
-AnimationPlayer
 AudioStreamPlayer
 AudioStreamPlayer3D
-VideoStreamPlayer
 TextureRect
 MarginContainer
 ColorRect
-Label

@@ -13,6 +13,7 @@ config_version=5
 config/name="project_fps"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=300
 config/icon="res://icon.svg"
 
 [debug]
@@ -21,12 +22,17 @@ shapes/collision/shape_color=Color(0, 0.6, 0.701961, 0.419608)
 
 [display]
 
-window/size/viewport_height=1000
-window/size/mode=2
+window/size/viewport_width=2400
+window/size/viewport_height=1200
+window/size/mode=4
 
 [dotnet]
 
 project/assembly_name="project_fps"
+
+[editor]
+
+movie_writer/mjpeg_quality=0.8
 
 [input]
 
@@ -68,6 +74,11 @@ fire={
 crouch={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194326,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+prone={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"echo":false,"script":null)
 ]
 }
 

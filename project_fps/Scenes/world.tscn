@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=32 format=3 uid="uid://dag0g2egxrx4l"]
 
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
@@ -32,18 +32,29 @@ uv1_triplanar_sharpness = 4.22
 transparency = 1
 depth_draw_mode = 1
 albedo_color = Color(0.176471, 0.160784, 0.160784, 0.627451)
+metallic = 0.4
+metallic_specular = 0.3
+emission = Color(0.447059, 0.447059, 0.447059, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uvmv"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q77sn"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m62g0"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kbvxh"]
 albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
 
@@ -116,10 +127,116 @@ tracks/3/keys = {
 "values": [2.0, 1.25]
 }
 
+[sub_resource type="Animation" id="Animation_g7nnc"]
+resource_name = "stand_to_prone"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.62, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.583256, 0.0474529), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5i55d"]
+resource_name = "crouch_to_prone"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.25, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.33, 0), Vector3(0, -0.68, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0.047), Vector3(0, -0.5, 0.047)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.25, 2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tssfl"]
 _data = {
 "RESET": SubResource("Animation_04oh5"),
-"crouching": SubResource("Animation_dcbo6")
+"crouch_to_prone": SubResource("Animation_5i55d"),
+"crouching": SubResource("Animation_dcbo6"),
+"stand_to_prone": SubResource("Animation_g7nnc")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypnte"]
@@ -134,6 +251,14 @@ environment = ExtResource("1_32h18")
 transform = Transform3D(-0.866025, -0.307831, 0.394006, 0, 0.78801, 0.615662, -0.5, 0.533178, -0.682438, 0, 0, 0)
 visible = false
 shadow_enabled = true
+shadow_opacity = 0.8
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.528438, 0.21973, 0.820044, -8.44439e-08, -0.965925, 0.258819, 0.848971, -0.13677, -0.510433, 0, 0, 0)
+light_color = Color(0.980392, 0.631373, 0.580392, 1)
+light_energy = 0.9
+shadow_enabled = true
+shadow_normal_bias = 6.0
 shadow_opacity = 0.8
 
 [node name="ground" type="CSGBox3D" parent="."]
@@ -171,6 +296,36 @@ transform = Transform3D(1.30034, 0.105788, 0.364598, -0.0861634, 1.5965, -0.0241
 
 [node name="palm_tree2" parent="setting" instance=ExtResource("4_l4fl8")]
 transform = Transform3D(0.744331, 0.00676461, -0.784369, -0.0377874, 1.39906, -0.0187457, 0.940502, 0.0508577, 0.620012, -26.9677, 0.0594664, 7.9462)
+
+[node name="palm_tree3" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.101751, 0.293624, 0.980327, -0.147581, 1.56614, -0.17542, -1.38848, -0.144947, 0.0904863, -27.7661, 1.07536, 2.66478)
+
+[node name="palm_tree4" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(1.38854, 0.106475, 0.542648, -0.00188687, 1.78763, -0.128711, -0.794958, 0.181735, 0.948138, -17.3622, 0.412428, -36.5059)
+
+[node name="palm_tree5" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(-0.25262, -0.147128, -1.7761, 0.00658293, 1.79377, -0.149527, 1.78217, -0.0274808, -0.251207, -7.75258, 1.41867, -36.5059)
+
+[node name="palm_tree6" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.853928, 0.067628, 0.690096, -0.0428376, 1.09781, -0.0545756, -0.692078, 0.0154924, 0.854862, -4.03629, 1.0559, -31.6336)
+
+[node name="palm_tree7" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(1.15651, -0.0609466, 0.546133, 0.0478483, 1.59881, 0.0140261, -0.591781, 0.0101644, 1.06843, -1.71055, 0.606886, -35.0304)
+
+[node name="palm_tree8" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.240923, -0.02053, 1.48268, 0.0588902, 1.1991, 0.0175326, -1.58066, 0.0415455, 0.226641, -12.5354, -0.0539544, -35.3893)
+
+[node name="palm_tree9" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(-0.821266, 0.101422, -1.85378, -0.291463, 2.56525, 0.18976, 2.02004, 0.411362, -0.72629, 6.92703, -0.000498056, -43.845)
+
+[node name="palm_tree10" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.41274, 0.0324052, -1.95668, -0.217658, 1.98808, -0.0129873, 1.94481, 0.215624, 0.413806, 14.952, 0.938564, -47.5559)
+
+[node name="palm_tree11" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(-0.341864, -0.00533521, 1.46535, 0.0588902, 1.49888, 0.0175326, -1.56194, 0.0576803, -0.320062, 25.203, 1.48037, -36.7946)
+
+[node name="palm_tree12" parent="setting" instance=ExtResource("4_l4fl8")]
+transform = Transform3D(0.12117, 0.18176, 1.68862, 0.031192, 1.99111, -0.157083, -1.69539, 0.0496231, 0.117797, -27.6066, 0.462998, 16.2212)
 
 [node name="net" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -212,6 +367,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.86)
 material_override = SubResource("StandardMaterial3D_1uvmv")
 snap = 1.0
 use_collision = true
+collision_layer = 0
+collision_mask = 0
 size = Vector3(36.676, 0.001, 0.1)
 metadata/_edit_lock_ = true
 
@@ -219,6 +376,8 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.86)
 material_override = SubResource("StandardMaterial3D_q77sn")
 use_collision = true
+collision_layer = 0
+collision_mask = 0
 size = Vector3(36.676, 0.001, 0.1)
 metadata/_edit_lock_ = true
 
@@ -226,6 +385,8 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.288, 0, 0)
 material_override = SubResource("StandardMaterial3D_m62g0")
 use_collision = true
+collision_layer = 0
+collision_mask = 0
 size = Vector3(45.62, 0.001, 0.1)
 metadata/_edit_lock_ = true
 
@@ -233,12 +394,16 @@ metadata/_edit_lock_ = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 18.288, 0, 0)
 material_override = SubResource("StandardMaterial3D_kbvxh")
 use_collision = true
+collision_layer = 0
+collision_mask = 0
 size = Vector3(45.62, 0.001, 0.1)
 metadata/_edit_lock_ = true
 
 [node name="50-mark" type="CSGBox3D" parent="field lines"]
 material_override = SubResource("StandardMaterial3D_q77sn")
 use_collision = true
+collision_layer = 0
+collision_mask = 0
 size = Vector3(36.676, 0.001, 0.1)
 metadata/_edit_lock_ = true
 
@@ -426,7 +591,7 @@ transform = Transform3D(0.861549, 0, -0.507673, 0, 1, 0, 0.507673, 0, 0.861549, 
 transform = Transform3D(0.966331, 0, 0.257302, 0, 1, 0, -0.257302, 0, 0.966331, 11.2342, -5.96046e-08, -15.9853)
 
 [node name="bot6" parent="bots" instance=ExtResource("12_qkqh3")]
-transform = Transform3D(0.995501, 0, 0.0947519, 0, 1, 0, -0.0947519, 0, 0.995501, -0.115721, -5.96046e-08, -18.3487)
+transform = Transform3D(0.995501, 0, 0.0947519, 0, 1, 0, -0.0947519, 0, 0.995501, -1.68822, -5.96046e-08, -21.9828)
 
 [node name="bot7" parent="bots" instance=ExtResource("12_qkqh3")]
 transform = Transform3D(0.999948, 0, 0.0102456, 0, 1, 0, -0.0102456, 0, 0.999948, -16.0844, -5.96046e-08, -16.3486)
@@ -435,12 +600,12 @@ transform = Transform3D(0.999948, 0, 0.0102456, 0, 1, 0, -0.0102456, 0, 0.999948
 transform = Transform3D(0.615841, -0.108254, 0.780398, 0.784723, -0.00416862, -0.619833, 0.0703527, 0.994114, 0.0823824, -11.2801, 0.207541, -3.80106)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5145, 0.88, 4.11588)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6465, 0.88, 4.01204)
 floor_snap_length = 0.0
 script = ExtResource("1_p3b3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
-transform = Transform3D(0.5, 0, 0, 0, 0.88, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7x0lq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player/CollisionShape3D"]
@@ -449,7 +614,7 @@ mesh = SubResource("CapsuleMesh_he70r")
 skeleton = NodePath("../..")
 
 [node name="head" type="Node3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.047)
 
 [node name="Camera3D" type="Camera3D" parent="player/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538736, -0.0717591, 0.0539341)
@@ -462,6 +627,7 @@ transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.033
 stream = ExtResource("14_esrle")
 max_db = 2.0
 pitch_scale = 0.93
+max_polyphony = 10
 panning_strength = 0.9
 attenuation_filter_cutoff_hz = 20500.0
 
