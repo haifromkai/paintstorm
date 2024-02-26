@@ -76,8 +76,6 @@ autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_kfr3m")
-volume_db = -6.0
-pitch_scale = 1.25
-max_polyphony = 10
+volume_db = -11.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

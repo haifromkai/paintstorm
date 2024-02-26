@@ -67,7 +67,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_dcbo6"]
 resource_name = "crouch"
 length = 0.4
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -462,7 +461,7 @@ transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, 
 transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
 stream = ExtResource("14_esrle")
 max_db = 2.0
-pitch_scale = 0.96
+pitch_scale = 0.93
 panning_strength = 0.9
 attenuation_filter_cutoff_hz = 20500.0
 
