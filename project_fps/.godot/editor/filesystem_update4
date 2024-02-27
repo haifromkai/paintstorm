@@ -1,8 +1,8 @@
-res://Scripts/main_menu.gd
-res://Scenes/main_menu.tscn
+res://Scripts/paintball.gd
+res://Scripts/setting.gd
+res://Scenes/world.tscn
 res://Environments/sunset.tres
 res://Textures/dorito-skin.tres
-res://Scenes/world.tscn
+res://Scripts/world.gd
 res://Scripts/player.gd
-res://Environments/night.tres
 res://Models/marker/paintball.tscn

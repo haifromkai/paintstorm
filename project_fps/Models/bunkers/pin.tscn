@@ -43,6 +43,8 @@ data = PackedVector3Array(0.5172, 0.5172, 0.0001, 0, 0, 0.0001, 0.5497, 0, 0.000
 
 [node name="pin" type="StaticBody3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, -2.62268e-08, 4.2, 0, -0.6, -1.83588e-07, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="pin" type="MeshInstance3D" parent="pin"]
 mesh = SubResource("ArrayMesh_sgkc5")

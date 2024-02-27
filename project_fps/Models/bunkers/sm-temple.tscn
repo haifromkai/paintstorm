@@ -47,6 +47,8 @@ shadow_mesh = SubResource("ArrayMesh_5jjrc")
 
 [node name="Plane_001" type="StaticBody3D" parent="."]
 transform = Transform3D(0.85, 0, 0, 0, -3.49691e-08, 0.55, 0, -0.8, -2.40413e-08, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane_001"]
 visible = false

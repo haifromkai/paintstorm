@@ -47,6 +47,8 @@ shadow_mesh = SubResource("ArrayMesh_lfui3")
 
 [node name="snake-beam_001" type="StaticBody3D" parent="."]
 transform = Transform3D(-1.87959e-07, -4, -1.74846e-07, 0, -1.74846e-07, 4, -4.3, 1.74846e-07, 7.64274e-15, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="snake-beam_001"]
 transform = Transform3D(1, 0, 0, 0, 1, 8.35187e-23, 0, 8.35187e-23, 1, 0, 0, 0)

@@ -6,8 +6,8 @@ const jump_velocity = 5.0
 const gravity = 9.8
 
 # Movement
-const sensitivity = 0.0006
-const walk_speed = 3.2
+const sensitivity = 0.0007
+const walk_speed = 3.3
 const crouch_speed = 2.0
 const prone_speed = 2.0
 const sprint_speed = 6.3
@@ -22,7 +22,6 @@ var t_bob = 0.0
 
 # FOV
 const base_fov = 75.0
-#const fov_change = 0.75
 const fov_change = 0.75
 
 # Paintball
@@ -62,13 +61,13 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta * 1.7
 
 	# Jump Handling (cant jump when holding crouch)
-	if Input.is_action_just_pressed("jump") and is_on_floor() and !Input.is_action_pressed("crouch"):
+	if Input.is_action_just_pressed("jump") and is_on_floor() and !Input.is_action_pressed("crouch") and !is_prone:
 		velocity.y = jump_velocity * 1.3
 
 	# Speed Handling
 	if Input.is_action_pressed("sprint"):
 		speed = sprint_speed
-	elif Input.is_action_pressed("crouch"):
+	elif is_crouching:
 		speed = crouch_speed
 	elif is_prone:
 		speed = prone_speed
@@ -114,7 +113,7 @@ func _physics_process(delta):
 	# stay in crouch animation if ctrl is held down
 	if Input.is_action_pressed("crouch"):
 		# player has to be on ground and not holding sprint
-		if !is_crouching and is_on_floor() and !Input.is_action_pressed("sprint"):
+		if !is_crouching and is_on_floor() and !Input.is_action_pressed("sprint") and !is_prone:
 			player_anim.play("crouching")
 			is_crouching = true
 	# return to standing position if ctrl is let go
@@ -124,25 +123,35 @@ func _physics_process(delta):
 			is_crouching = false
 
 	# Prone Handling (toggle)
-	# Need to fix animations and not allow jump
+	# Need to fix animations
 	if Input.is_action_just_pressed("prone"):
-	# 	# when player is standing
-		if !is_prone and is_on_floor() and !Input.is_action_pressed("sprint") and !Input.is_action_pressed("crouch"):
+		# standing to prone
+		if !is_prone and is_on_floor() and !Input.is_action_pressed("crouch"):
 			player_anim.play("stand_to_prone")
 			is_prone = true
+		# prone to standing
 		elif is_prone and is_on_floor() and !Input.is_action_pressed("sprint") and !Input.is_action_pressed("crouch"):
 			player_anim.play_backwards("stand_to_prone")
 			is_prone = false
+		# prone to crouching
+		# elif is_prone and is_on_floor() and !Input.is_action_pressed("sprint") and Input.is_action_pressed("crouch"):
+		# 	player_anim.play_backwards("crouch_to_prone")
+		# 	is_prone = false
 
-	# 	# when player is crouching
+		# when player is crouching
 		# if !is_prone and is_crouching:
 		# 	player_anim.play("crouch_to_prone")
 		# 	is_prone = true
-		# elif is_prone:
+		# elif is_prone and is_crouching:
 		# 	player_anim.play_backwards("crouch_to_prone")
 		# 	is_prone = false
+		
+	# 	# when player not holding crouch in prone and press prone
+	# if is_prone and !is_crouching:
+	# 	if Input.is_action_just_pressed("prone"):
+	# 		player_anim.play_backwards("stand_to_prone")
+	# 		is_prone = false
 	
-
 
 
 	# Firing

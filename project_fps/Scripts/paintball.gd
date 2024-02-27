@@ -33,14 +33,27 @@ func _process(delta):
 	if ray.is_colliding():
 		_paintball_hit()
 
-func _paintball_hit():
-	# turn off mesh visibilty
-	mesh.visible = false
-	# turn on gpu particle
-	particles.emitting = true
-	# play sound when paintball hits
-	hit_sound.play()
-	# wait 1s until particles done emitting 
-	await get_tree().create_timer(1.1).timeout
-	# delete the paintball
-	queue_free()
+func _paintball_hit(): # still need to fix paintball colliding through bots
+
+	# get what paintball collided with 
+	var collider = ray.get_collider()
+
+	# check if collider exists and if it's in the bot collision layer
+	if collider and (collider.name.find("bot") != -1 or collider.name.find("Bone") != -1):
+		
+		# emit signal
+		emit_signal("hit", 1)
+		
+		# play sound when paintball hitsd
+		hit_sound.play()
+		# turn off mesh visibilty
+		mesh.visible = false
+		# turn on gpu particle
+		particles.emitting = true
+		# wait 1s until particles done emitting 
+		await get_tree().create_timer(1.1).timeout
+		# delete the paintball
+		queue_free()
+
+	else:
+		queue_free()

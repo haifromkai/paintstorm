@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=34 format=3 uid="uid://dag0g2egxrx4l"]
 
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_3qfnv"]
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
 [ext_resource type="Texture2D" uid="uid://cr0nfhv4j12jd" path="res://Textures/turf_indoor.jpg" id="1_n5hcc"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_p3b3g"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dc0a606tu04cm" path="res://Models/bunkers/sm-temple.tscn" id="4_g0dll"]
 [ext_resource type="PackedScene" uid="uid://b1cbpvwe2psoc" path="res://Models/foliage/palm_tree/palm_tree.tscn" id="4_l4fl8"]
 [ext_resource type="PackedScene" uid="uid://ctlpp1lt6vm73" path="res://Models/bunkers/tower.tscn" id="4_tlv60"]
+[ext_resource type="AudioStream" uid="uid://bsk3qgkdpnlgm" path="res://Audio/snibbit.mp3" id="6_v0uvo"]
 [ext_resource type="PackedScene" uid="uid://bdtonh63dm0xx" path="res://Models/bunkers/wall.tscn" id="7_28yi2"]
 [ext_resource type="PackedScene" uid="uid://bsbjdnok0dp7g" path="res://Models/bunkers/snake.tscn" id="8_fh07x"]
 [ext_resource type="PackedScene" uid="uid://bfq0fnahslq78" path="res://Models/bunkers/cake.tscn" id="9_oif0x"]
@@ -73,6 +75,70 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_5i55d"]
+resource_name = "crouch_to_prone"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.25, 2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.33, 0), Vector3(0, -0.68, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.05, 0.047), Vector3(0, -0.5, 0.047)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.25, 2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dcbo6"]
@@ -167,70 +233,6 @@ tracks/2/keys = {
 "values": [Vector3(0, 0.583256, 0.0474529), Vector3(0, -0.5, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_5i55d"]
-resource_name = "crouch_to_prone"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.25, 2.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -0.33, 0), Vector3(0, -0.68, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("head:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.05, 0.047), Vector3(0, -0.5, 0.047)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.25, 2.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape3D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tssfl"]
 _data = {
 "RESET": SubResource("Animation_04oh5"),
@@ -243,6 +245,7 @@ _data = {
 albedo_color = Color(0.411765, 0.0666667, 0.337255, 1)
 
 [node name="world" type="Node3D"]
+script = ExtResource("1_3qfnv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_32h18")
@@ -326,6 +329,10 @@ transform = Transform3D(-0.341864, -0.00533521, 1.46535, 0.0588902, 1.49888, 0.0
 
 [node name="palm_tree12" parent="setting" instance=ExtResource("4_l4fl8")]
 transform = Transform3D(0.12117, 0.18176, 1.68862, 0.031192, 1.99111, -0.157083, -1.69539, 0.0496231, 0.117797, -27.6066, 0.462998, 16.2212)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="setting"]
+stream = ExtResource("6_v0uvo")
+volume_db = -10.0
 
 [node name="net" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -600,7 +607,7 @@ transform = Transform3D(0.999948, 0, 0.0102456, 0, 1, 0, -0.0102456, 0, 0.999948
 transform = Transform3D(0.615841, -0.108254, 0.780398, 0.784723, -0.00416862, -0.619833, 0.0703527, 0.994114, 0.0823824, -11.2801, 0.207541, -3.80106)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6465, 0.88, 4.01204)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15372, 0.88, 20.3219)
 floor_snap_length = 0.0
 script = ExtResource("1_p3b3g")
 
@@ -609,12 +616,13 @@ transform = Transform3D(0.3, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7x0lq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player/CollisionShape3D"]
+visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_he70r")
 skeleton = NodePath("../..")
 
 [node name="head" type="Node3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0.047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
 
 [node name="Camera3D" type="Camera3D" parent="player/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538736, -0.0717591, 0.0539341)
@@ -625,6 +633,7 @@ transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, 
 [node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
 transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
 stream = ExtResource("14_esrle")
+volume_db = 1.0
 max_db = 2.0
 pitch_scale = 0.93
 max_polyphony = 10

@@ -3,7 +3,13 @@ extends Node3D
 # initialize an empty array for palm tree AnimationPlayer node path
 var palm_tree_anims = []
 
+@onready var background_music = $AudioStreamPlayer
+
 func _ready():
+
+    # Play backgroujnd music
+    background_music.play()
+
 
     # Find and collect AnimationPlayer nodes of all palm trees
 	# parse through each child node of setting node
