@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=35 format=3 uid="uid://dag0g2egxrx4l"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3qfnv"]
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
@@ -61,6 +61,9 @@ emission_energy_multiplier = 16.0
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
+
+[sub_resource type="Theme" id="Theme_6haea"]
+default_font_size = 80
 
 [sub_resource type="Animation" id="Animation_04oh5"]
 length = 0.001
@@ -332,7 +335,7 @@ transform = Transform3D(0.12117, 0.18176, 1.68862, 0.031192, 1.99111, -0.157083,
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="setting"]
 stream = ExtResource("6_v0uvo")
-volume_db = -10.0
+volume_db = -11.0
 
 [node name="net" type="Node3D" parent="."]
 metadata/_edit_lock_ = true
@@ -607,28 +610,33 @@ transform = Transform3D(0.999948, 0, 0.0102456, 0, 1, 0, -0.0102456, 0, 0.999948
 transform = Transform3D(0.615841, -0.108254, 0.780398, 0.784723, -0.00416862, -0.619833, 0.0703527, 0.994114, 0.0823824, -11.2801, 0.207541, -3.80106)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.15372, 0.88, 20.3219)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 26.7771)
 floor_snap_length = 0.0
 script = ExtResource("1_p3b3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 transform = Transform3D(0.3, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_7x0lq")
+metadata/_edit_lock_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player/CollisionShape3D"]
 visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_he70r")
 skeleton = NodePath("../..")
+metadata/_edit_lock_ = true
 
 [node name="head" type="Node3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
+metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="player/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538736, -0.0717591, 0.0539341)
+metadata/_edit_lock_ = true
 
 [node name="marker" parent="player/head/Camera3D" instance=ExtResource("13_lvfld")]
 transform = Transform3D(0.496865, -0.00444156, -0.0557259, 0.0034901, 0.499912, -0.00872619, 0.0557936, 0.00828251, 0.496808, 0.0830002, -0.219, -0.108)
+metadata/_edit_lock_ = true
 
 [node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
 transform = Transform3D(1.98746, 0.0139604, 0.223175, -0.0177662, 1.99965, 0.0331301, -0.222904, -0.0349048, 1.98723, -0.0523987, 0.327883, -0.192789)
@@ -639,6 +647,19 @@ pitch_scale = 0.93
 max_polyphony = 10
 panning_strength = 0.9
 attenuation_filter_cutoff_hz = 20500.0
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="player/head/Camera3D"]
+
+[node name="Label" type="Label" parent="player/head/Camera3D/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_6haea")
+horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {

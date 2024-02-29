@@ -45,18 +45,18 @@ shadow_mesh = SubResource("ArrayMesh_lfui3")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7056p"]
 points = PackedVector3Array(-0.39559, -0.0653125, 1e-05, -0.39559, -0.0716719, 0.0185136, -0.39559, 0.0652964, 1e-05, 0.404788, -0.0653125, 1e-05, -0.39559, -0.08203, 0.10374, 0.404788, -0.0716719, 0.0185136, -0.39559, 0.0716558, 0.0185136, 0.404788, 0.0652964, 1e-05, -0.39559, -0.0716719, 0.188986, 0.404788, -0.08203, 0.10374, -0.39559, 0.08203, 0.10374, 0.404788, 0.0716558, 0.0185136, -0.39559, -0.0653125, 0.20751, 0.404788, -0.0716719, 0.188986, -0.39559, 0.0716558, 0.188986, 0.404788, 0.08203, 0.10374, -0.39559, 0.0652964, 0.20751, 0.404788, -0.0653125, 0.20751, 0.404788, 0.0716558, 0.188986, 0.404788, 0.0652964, 0.20751)
 
-[node name="brick" type="Node3D"]
+[node name="brick" type="Node3D" groups=["bunker"]]
 
-[node name="brick" type="StaticBody3D" parent="."]
+[node name="brick" type="StaticBody3D" parent="." groups=["bunker"]]
 transform = Transform3D(-2.18557e-07, -7.6, -4.80825e-07, 0, -3.32207e-07, 11, -5, 3.32207e-07, 2.10175e-14, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 
-[node name="brick" type="MeshInstance3D" parent="brick"]
+[node name="brick" type="MeshInstance3D" parent="brick" groups=["bunker"]]
 mesh = SubResource("ArrayMesh_gustw")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_1mwkm")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="brick"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="brick" groups=["bunker"]]
 visible = false
 shape = SubResource("ConvexPolygonShape3D_7056p")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcthhirm1xvde"]
+[gd_scene load_steps=11 format=3 uid="uid://bcthhirm1xvde"]
 
 [ext_resource type="Script" path="res://Scripts/paintball.gd" id="1_nbu6n"]
 [ext_resource type="AudioStream" uid="uid://c53xc3483lmpm" path="res://Audio/menu_sound.wav" id="2_kfr3m"]
+[ext_resource type="AudioStream" uid="uid://b0rmqla7reakv" path="res://Audio/bunker.wav" id="3_4ip1d"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_4qb1u"]
 
@@ -77,5 +78,12 @@ autostart = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_kfr3m")
 volume_db = -11.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_4ip1d")
+volume_db = -18.0
+pitch_scale = 1.7
+max_polyphony = 10
+attenuation_filter_cutoff_hz = 20500.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

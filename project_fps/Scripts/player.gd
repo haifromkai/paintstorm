@@ -28,6 +28,9 @@ const fov_change = 0.75
 var paintball = load("res://Models/marker/paintball.tscn")
 var instance
 
+# Signals
+signal add_point
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ DEFINING ONREADY VARIABLES ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @onready var head = $head
 @onready var camera = $head/Camera3D
@@ -168,6 +171,8 @@ func _physics_process(delta):
 			
 			# instantiate() creates a new object from the loaded paintball scene
 			instance = paintball.instantiate()
+			# connect the "enemy_hit" signal from paintball script
+			instance.connect("enemy_hit", tell_game_update_score)
 			# set position of new paintball to global position of marker barrel raycast
 			instance.position = marker_barrel.global_position
 			# set transform basis or rotation of new paintball to marker barrel raycast
@@ -183,3 +188,6 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * bob_freq) * bob_amp
 	pos.x = cos(time * bob_freq / 2) * bob_amp
 	return pos
+
+func tell_game_update_score():
+	emit_signal("add_point")

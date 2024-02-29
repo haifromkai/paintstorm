@@ -1,8 +1,10 @@
+res://Scripts/world.gd
 res://Scripts/paintball.gd
-res://Scripts/setting.gd
 res://Scenes/world.tscn
 res://Environments/sunset.tres
 res://Textures/dorito-skin.tres
-res://Scripts/world.gd
+res://Models/bot/bot.tscn
 res://Scripts/player.gd
+res://Scripts/main_menu.gd
 res://Models/marker/paintball.tscn
+res://Models/bunkers/brick.tscn
