@@ -1,0 +1,217 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1fr4hxvgkcd6"]
+
+[ext_resource type="Script" path="res://Scripts/map_menu.gd" id="1_q3wqw"]
+[ext_resource type="Texture2D" uid="uid://cs6q4inahuyme" path="res://Textures/day.PNG" id="2_o2vg5"]
+[ext_resource type="Texture2D" uid="uid://50kntcjoskt4" path="res://Textures/sunset.PNG" id="3_7f04o"]
+[ext_resource type="Texture2D" uid="uid://tduxrsxnp8m8" path="res://Textures/night.PNG" id="4_02aac"]
+[ext_resource type="AudioStream" uid="uid://c53xc3483lmpm" path="res://Audio/menu_sound.wav" id="5_hsp4u"]
+[ext_resource type="AudioStream" uid="uid://ly8s53h43ofo" path="res://Audio/ui_selected.mp3" id="6_nlqvk"]
+[ext_resource type="FontFile" uid="uid://dd5dfv1s6yrtg" path="res://Fonts/YumeNikkiTitleScreen.ttf" id="7_7i20y"]
+
+[sub_resource type="Theme" id="Theme_ee4ir"]
+default_font = ExtResource("7_7i20y")
+default_font_size = 30
+
+[node name="map_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+auto_translate = false
+script = ExtResource("1_q3wqw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="DayBackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o2vg5")
+
+[node name="SunsetBackground" type="TextureRect" parent="."]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_7f04o")
+
+[node name="NightBackground" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_02aac")
+
+[node name="Selector" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hsp4u")
+volume_db = -4.0
+max_polyphony = 10
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_nlqvk")
+volume_db = -9.0
+pitch_scale = 1.34
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 140
+text = "paintstorm"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(195, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = "Day"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(195, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = "Sunset"
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3"]
+layout_mode = 2
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(195, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = "Night"
+
+[node name="CenterContainer4" type="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4"]
+layout_mode = 2
+
+[node name="Selector" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = ">"
+
+[node name="OptionName" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer2/VBoxContainer/CenterContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(195, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("7_7i20y")
+theme_override_font_sizes/font_size = 60
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_ee4ir")
+text = "V1.0"

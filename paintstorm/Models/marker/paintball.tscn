@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcthhirm1xvde"]
+
+[ext_resource type="Script" path="res://Scripts/paintball.gd" id="1_nbu6n"]
+[ext_resource type="AudioStream" uid="uid://c53xc3483lmpm" path="res://Audio/menu_sound.wav" id="2_kfr3m"]
+[ext_resource type="AudioStream" uid="uid://b0rmqla7reakv" path="res://Audio/bunker.wav" id="3_4ip1d"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4qb1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6ypb"]
+albedo_color = Color(1, 0.341176, 0.764706, 1)
+roughness = 0.12
+emission_enabled = true
+emission = Color(0.556863, 0.133333, 0.709804, 1)
+emission_energy_multiplier = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_bx84w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4vhp"]
+albedo_color = Color(1, 0.341176, 0.764706, 1)
+roughness = 0.12
+emission_enabled = true
+emission = Color(0.556863, 0.133333, 0.709804, 1)
+emission_energy_multiplier = 12.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8o7kd"]
+albedo_color = Color(1, 0.341176, 0.764706, 1)
+emission_enabled = true
+emission = Color(1, 0.2, 0.745098, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="Curve" id="Curve_yupri"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 2.0, 0, 1, Vector2(1, 1), 2.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ec03k"]
+curve = SubResource("Curve_yupri")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4lswb"]
+direction = Vector3(0, 1, 1)
+spread = 70.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, -5, 0)
+hue_variation_curve = SubResource("CurveTexture_ec03k")
+
+[sub_resource type="SphereMesh" id="SphereMesh_akai7"]
+radius = 0.03
+height = 0.06
+
+[node name="paintball" type="Node3D"]
+script = ExtResource("1_nbu6n")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-2.2, 0, 3.01992e-07, 0, 2.2, 0, -3.32191e-07, 0, -2, 0, 0, -0.0316168)
+target_position = Vector3(0, 0, -0.65)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)
+mesh = SubResource("SphereMesh_4qb1u")
+surface_material_override/0 = SubResource("StandardMaterial3D_t6ypb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.06, 0, 0, 0, 0.06, 0, 0, 0, 0.06, 0, 0, 0)
+mesh = SubResource("SphereMesh_bx84w")
+surface_material_override/0 = SubResource("StandardMaterial3D_v4vhp")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0391894)
+layers = 3
+material_override = SubResource("StandardMaterial3D_8o7kd")
+emitting = false
+amount = 35
+lifetime = 1.1
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+randomness = 0.7
+fixed_fps = 60
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_4lswb")
+draw_pass_1 = SubResource("SphereMesh_akai7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_kfr3m")
+volume_db = -11.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_4ip1d")
+volume_db = -19.0
+pitch_scale = 1.4
+max_polyphony = 10
+attenuation_filter_cutoff_hz = 20500.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

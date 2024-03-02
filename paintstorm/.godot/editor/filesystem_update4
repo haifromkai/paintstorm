@@ -1,0 +1,6 @@
+res://Scripts/paintball.gd
+res://Scenes/world.tscn
+res://Environments/sunset.tres
+res://Textures/dorito-skin.tres
+res://Scenes/main_menu.tscn
+res://Scenes/map_menu.tscn

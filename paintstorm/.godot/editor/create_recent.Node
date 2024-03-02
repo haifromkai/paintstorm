@@ -1,0 +1,14 @@
+ColorRect
+Label
+Camera3D
+ItemList
+AudioStreamPlayer
+TextureRect
+Node3D
+AudioStreamPlayer3D
+AudioListener3D
+TextureProgressBar
+VBoxContainer
+CanvasLayer
+CollisionShape3D
+AnimationPlayer
