@@ -11,7 +11,7 @@
 </details>
 
 # About the Project
-Name: project_fps <br>
+Name: paintstorm <br>
 Started: 1/31/24 <br>
 Description: a paintball fps game in Godot <br>
 
@@ -50,6 +50,6 @@ Updated Environment: Sunset
 
 # Contact
 Kai Fang - (KaiGdev@gmail.com) <br>
-Project Link: https://github.com/haifromkai/project_fps
+Project Link: https://github.com/haifromkai/paintstorm
 
 <p align = "right">(<a href = "#readme-top">back to top</a>)</p>
