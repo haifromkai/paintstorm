@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=42 format=3 uid="uid://dag0g2egxrx4l"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3qfnv"]
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://br6ts5nskhc0m" path="res://Models/marker/marker.tscn" id="13_lvfld"]
 [ext_resource type="AudioStream" uid="uid://bxbfld350m3ig" path="res://Audio/marker_fire.wav" id="14_esrle"]
 [ext_resource type="FontFile" uid="uid://dd5dfv1s6yrtg" path="res://Fonts/YumeNikkiTitleScreen.ttf" id="20_bmvf4"]
+[ext_resource type="Texture2D" uid="uid://4fn1duujavx1" path="res://Textures/crosshair.png" id="20_i0hx4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4vwg"]
 albedo_texture = ExtResource("1_n5hcc")
@@ -58,9 +59,22 @@ albedo_color = Color(0.854902, 0.854902, 0.854902, 1)
 emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 16.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7x0lq"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_push4"]
+radius = 0.3
+height = 1.84
+radial_segments = 8
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_he70r"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ofj14"]
+radius = 0.3
+height = 1.84
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cron2"]
+radius = 0.3
+height = 0.9
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f8jmi"]
+radius = 0.22
+height = 0.52
 
 [sub_resource type="Theme" id="Theme_t00k2"]
 default_font = ExtResource("20_bmvf4")
@@ -78,20 +92,12 @@ default_font_size = 120
 default_font = ExtResource("20_bmvf4")
 default_font_size = 30
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vvlvf"]
+radius = 0.3
+height = 1.84
+
 [sub_resource type="Animation" id="Animation_04oh5"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.0]
-}
 
 [sub_resource type="Animation" id="Animation_5i55d"]
 resource_name = "crouch_to_prone"
@@ -99,7 +105,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/path = NodePath("Standing_CollisionShape3D:shape:height")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -111,7 +117,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("Standing_CollisionShape3D:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,22 +141,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
-tracks/3/interp = 2
+tracks/3/path = NodePath("Standing_CollisionShape3D:rotation")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.25, 2.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape3D:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -163,7 +157,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/path = NodePath("Standing_CollisionShape3D:shape:height")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -175,7 +169,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("Standing_CollisionShape3D:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -196,18 +190,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0.583256, 0.0474529), Vector3(0, 0.05, 0.047)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D/MeshInstance3D:mesh:height")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [2.0, 1.25]
-}
 
 [sub_resource type="Animation" id="Animation_g7nnc"]
 resource_name = "stand_to_prone"
@@ -215,7 +197,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/path = NodePath("Standing_CollisionShape3D:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -227,7 +209,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("Standing_CollisionShape3D:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -625,32 +607,44 @@ transform = Transform3D(0.999069, 0, 0.0431493, 0, 1, 0, -0.0431493, 0, 0.999069
 transform = Transform3D(0.944336, 0, -0.328981, 0, 1, 0, 0.328981, 0, 0.944336, 1.20958, -5.96046e-08, -9.43222)
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88, 26.8019)
-floor_snap_length = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 26.802)
+floor_constant_speed = true
+floor_block_on_wall = false
+floor_max_angle = 0.872665
+floor_snap_length = 1.0
 script = ExtResource("1_p3b3g")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
-transform = Transform3D(0.3, 0, 0, 0, 0.9, 0, 0, 0, 0.4, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_7x0lq")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0199999, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_push4")
+
+[node name="Standing_CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0199999, 0)
+shape = SubResource("CapsuleShape3D_ofj14")
 metadata/_edit_lock_ = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="player/CollisionShape3D"]
-visible = false
-cast_shadow = 0
-mesh = SubResource("CapsuleMesh_he70r")
-skeleton = NodePath("../..")
+[node name="Crouching_CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("CapsuleShape3D_cron2")
+disabled = true
+metadata/_edit_lock_ = true
+
+[node name="Crawling_CollisionShape3D" type="CollisionShape3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.64, 0)
+shape = SubResource("CapsuleShape3D_f8jmi")
+disabled = true
 metadata/_edit_lock_ = true
 
 [node name="head" type="Node3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.583256, 0.0474529)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.558, 0)
 metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="player/head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538736, -0.0717591, 0.0539341)
 metadata/_edit_lock_ = true
 
 [node name="marker" parent="player/head/Camera3D" instance=ExtResource("13_lvfld")]
-transform = Transform3D(0.497261, -0.000912137, -0.0522562, 0, 0.499924, -0.0087262, 0.0522642, 0.00867841, 0.497185, 0.0821751, -0.219, -0.108)
+transform = Transform3D(0.499997, 3.65514e-05, 0.00174494, 0, 0.499891, -0.0104712, -0.00174533, 0.0104712, 0.499887, 0.08, -0.224, -0.108)
 metadata/_edit_lock_ = true
 
 [node name="marker_fire" type="AudioStreamPlayer3D" parent="player/head/Camera3D/marker"]
@@ -724,7 +718,7 @@ Move - WASD
 Sprint - Shift (hold)
 Jump - Space
 Crouch - Ctrl (hold)
-Prone - C (toggle)"
+Prone - C (hold)"
 
 [node name="ColorRect2" type="ColorRect" parent="player/head/Camera3D/CanvasLayer"]
 anchors_preset = 5
@@ -774,6 +768,33 @@ grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_idy7f")
 text = "V1.0"
+
+[node name="crosshair" type="TextureRect" parent="player/head/Camera3D/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 95.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("20_i0hx4")
+
+[node name="RayCast3D" type="RayCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.899038, 0)
+target_position = Vector3(0, 1.84, 0)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945, 0)
+shape = SubResource("CapsuleShape3D_vvlvf")
+target_position = Vector3(0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="player"]
 libraries = {
