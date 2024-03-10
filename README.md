@@ -5,6 +5,7 @@
     <summary>Table of Contents</summary>
     <ol>
         <li><a href = "#about-the-project">About the Project</a></li>
+        <li><a href = "#versions">Versions</a></li>
         <li><a href = "#progress">Progress</a></li>
         <li><a href = "#contact">Contact</a></li>
     </ol>
@@ -13,10 +14,15 @@
 # About the Project
 Name: paintstorm <br>
 Started: 1/31/24 <br>
-Description: a paintball fps game in Godot <br>
+Initial Release: 3/2/24 <br>
+Description: a paintball fps game in Godot
 
-V1.0 Released: 3/2/24 <br>
-Will be patching small issues this week :)
+<details>
+    <summary>Versions</summary>
+<li>[3/2/24] - v1.0.0 - Initial Release🎉</li>
+<li>[3/9/24] - v1.0.1 - Patch🔨</li>
+
+</details>
 
 # Progress
 First block xD
