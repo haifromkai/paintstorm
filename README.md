@@ -15,6 +15,9 @@ Name: paintstorm <br>
 Started: 1/31/24 <br>
 Description: a paintball fps game in Godot <br>
 
+V1.0 Released: 3/2/24 <br>
+Will be patching small issues this week :)
+
 # Progress
 First block xD
 ![fpsgame_initial](https://github.com/haifromkai/project_fps/assets/49883801/2ebd2213-a4bb-42c5-860b-a1c675fdcc69)
@@ -47,6 +50,8 @@ https://github.com/haifromkai/project_fps/assets/49883801/7df70fd4-4f06-4b2b-8fe
 
 Updated Environment: Sunset
 ![sunset_02262023](https://github.com/haifromkai/project_fps/assets/49883801/64b31586-b668-4fd9-b6bf-cf1b4f36fd19)
+
+https://github.com/haifromkai/paintstorm/assets/49883801/c6c740c3-b709-4e29-a6ff-909ba89a6eea
 
 # Contact
 Kai Fang - (KaiGdev@gmail.com) <br>

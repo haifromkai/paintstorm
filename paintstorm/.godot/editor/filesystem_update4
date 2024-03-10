@@ -1,6 +1,8 @@
-res://Models/marker/marker.tscn
+res://Scenes/world.tscn
 res://Environments/sunset.tres
 res://Textures/dorito-skin.tres
-res://Scenes/world.tscn
-res://Scenes/main_menu.tscn
-res://Scenes/map_menu.tscn
+res://Scripts/world.gd
+res://Scripts/player.gd
+res://Scripts/main_menu.gd
+res://Scripts/map_menu.gd
+res://SignalManager.gd

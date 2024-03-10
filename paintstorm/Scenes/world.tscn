@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dag0g2egxrx4l"]
+[gd_scene load_steps=43 format=3 uid="uid://dag0g2egxrx4l"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_3qfnv"]
 [ext_resource type="Environment" uid="uid://ds37gquu5uran" path="res://Environments/sunset.tres" id="1_32h18"]
@@ -87,6 +87,10 @@ default_font_size = 50
 [sub_resource type="Theme" id="Theme_6haea"]
 default_font = ExtResource("20_bmvf4")
 default_font_size = 120
+
+[sub_resource type="Theme" id="Theme_o5tao"]
+default_font = ExtResource("20_bmvf4")
+default_font_size = 16
 
 [sub_resource type="Theme" id="Theme_idy7f"]
 default_font = ExtResource("20_bmvf4")
@@ -706,9 +710,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 30.0
-offset_top = -247.0
+offset_top = -314.0
 offset_right = 488.0
-offset_bottom = -30.0
+offset_bottom = -9.0
 grow_vertical = 0
 theme = SubResource("Theme_n3aew")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -718,7 +722,8 @@ Move - WASD
 Sprint - Shift (hold)
 Jump - Space
 Crouch - Ctrl (hold)
-Prone - C (hold)"
+Crawl - C (hold)
+Quit - Esc"
 
 [node name="ColorRect2" type="ColorRect" parent="player/head/Camera3D/CanvasLayer"]
 anchors_preset = 5
@@ -736,6 +741,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 18.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_6haea")
@@ -750,24 +756,41 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -50.0
+offset_left = -65.0
 offset_top = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 color = Color(0, 0, 0, 0.658824)
 
-[node name="Version" type="Label" parent="player/head/Camera3D/CanvasLayer"]
+[node name="v" type="Label" parent="player/head/Camera3D/CanvasLayer/ColorRect3"]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -49.0
+offset_left = -63.0
+offset_top = -15.0
+offset_right = -14.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = SubResource("Theme_o5tao")
+text = "v"
+
+[node name="semantic" type="Label" parent="player/head/Camera3D/CanvasLayer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -53.0
 offset_top = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = SubResource("Theme_idy7f")
-text = "V1.0"
+text = "1.0.1"
 
 [node name="crosshair" type="TextureRect" parent="player/head/Camera3D/CanvasLayer"]
 anchors_preset = 8
